@@ -1,0 +1,11 @@
+TASKS
+ordner verschieben
+files umbenennnen
+human image recognition
+konsolenbefehle
+
+
+FRAGEN
+schaffen wir mehrere Unity Fenster?
+jede konsole lebt nur fur 20 sec
+zweite unity app in der app
