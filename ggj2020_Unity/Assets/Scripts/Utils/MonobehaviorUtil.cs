@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonobehaviorUtil : MonoBehaviour
+namespace Game.Utils
 {
-	public static MonobehaviorUtil Instance;
-
-	private void Awake()
+	public class MonobehaviorUtil : MonoBehaviour
 	{
-		Instance = this;
-	}
+		public static MonobehaviorUtil Instance;
 
-	public string GetPersistentDataPath()
-	{
-		return Application.persistentDataPath;
-	}
+		private void Awake()
+		{
+			Instance = this;
+		}
 
-	public string GetDataPath()
-	{
-		return Application.dataPath;
-	}
+		public string GetPersistentDataPath()
+		{
+			return Application.persistentDataPath;
+		}
 
-	public void Write(string text)
-	{
-		Debug.Log(text);
+		public string GetDataPath()
+		{
+			return Application.dataPath;
+		}
+
+		public void Write(string text)
+		{
+			Debug.Log(text);
+		}
 	}
 }

@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TaskRequirement
+namespace Game.Requirements
 {
-	public bool Completed
+	public abstract class TaskRequirement
 	{
-		get
+		public bool Completed
 		{
-			if (!_completed)
+			get
 			{
-				_completed = IsCompleted();
+				if (!_completed)
+				{
+					_completed = IsCompleted();
+				}
+
+				return _completed;
 			}
-
-			return _completed;
 		}
+
+		private bool _completed;
+
+		public abstract bool IsCompleted();
 	}
-
-	private bool _completed;
-
-	public abstract bool IsCompleted();
 }

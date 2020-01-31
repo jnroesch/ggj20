@@ -1,48 +1,52 @@
-﻿using System.Collections;
+﻿using Game.Requirements;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GameTask
+namespace Game.Tasks.Abstract
 {
-	public List<TaskRequirement> Requirements;
-
-	public bool Completed
+	public abstract class GameTask
 	{
-		get
+		public List<TaskRequirement> Requirements;
+
+		public bool Completed
 		{
-			if (!_completed)
+			get
 			{
-				_completed = IsCompleted();
-			}
+				if (!_completed)
+				{
+					_completed = IsCompleted();
+				}
 
-			return _completed;
-		}
-	}
-
-	private bool _completed;
-
-	public bool IsCompleted()
-	{
-		foreach(var requirement in Requirements)
-		{
-			if (!requirement.Completed)
-			{
-				return false;
+				return _completed;
 			}
 		}
 
-		//no requirement failed therefore everything must be completed
-		return true;
-	}
+		private bool _completed;
 
-	public abstract void StartTask();
+		public bool IsCompleted()
+		{
+			foreach (var requirement in Requirements)
+			{
+				if (!requirement.Completed)
+				{
+					return false;
+				}
+			}
 
-	public abstract void WinTask();
+			//no requirement failed therefore everything must be completed
+			return true;
+		}
 
-	public abstract void FailTask();
+		public abstract void StartTask();
 
-	public GameTask (List<TaskRequirement> requirements)
-	{
-		Requirements = requirements;
+		public abstract void WinTask();
+
+		public abstract void FailTask();
+
+		public GameTask(List<TaskRequirement> requirements)
+		{
+			Requirements = requirements;
+		}
 	}
 }
