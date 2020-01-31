@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 469cb9d8a3eee624db256bef3849c5bb
+=======
+guid: 68b80952691f2a246822b349c08a846c
+>>>>>>> add simple task inheritance
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
