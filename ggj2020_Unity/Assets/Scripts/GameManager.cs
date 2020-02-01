@@ -141,7 +141,7 @@ namespace Game
 		{
 			gameHasEnded = true;
 			console.Log("METASYS ARK is in CRITICAL CONDITION. Your productivity score has been noted. Goodbye.");
-			console.Log("press return to try again");
+			console.Log("PRESS RETURN to continue your METASYS employment.");
 			timer.StopTimer();
 
 			//reset or use existing folder states?
