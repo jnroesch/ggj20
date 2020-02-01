@@ -26,7 +26,7 @@ namespace Game.Console.Commands
 
 		public void OpenDataPath()
 		{
-			System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+			Process.Start(new System.Diagnostics.ProcessStartInfo()
 			{
 				FileName = Application.dataPath,
 				UseShellExecute = true,
@@ -37,6 +37,11 @@ namespace Game.Console.Commands
 		public void Help()
 		{
 			GameConsole.instance.Log("looking for help? too bad");
+		}
+
+		public void CloseApp()
+		{
+			Application.Quit();
 		}
 	}
 }

