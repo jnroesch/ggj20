@@ -196,6 +196,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gameConsole: {fileID: 1530740456}
 --- !u!114 &247989157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gameConsole: {fileID: 1530740456}
 --- !u!114 &247989158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +252,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gameConsole: {fileID: 1530740456}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
