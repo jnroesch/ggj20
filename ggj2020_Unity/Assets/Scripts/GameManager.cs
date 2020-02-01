@@ -134,8 +134,7 @@ namespace Game
 
 		public string GetLastConsoleInput()
 		{
-			//TODO: use console to get last input
-			return string.Empty;
+			return console.GetLastLogEntryString();
 		}
 	}
 }
