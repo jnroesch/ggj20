@@ -166,8 +166,13 @@ namespace Game
 				if (string.Equals(command.Command, currentCommand, System.StringComparison.OrdinalIgnoreCase))
 				{
 					command.action.Invoke();
+					return;
 				}
 			}
+
+			var virusCreator = new VirusGenerator();
+			var virus = virusCreator.CreateRandomVirusAction();
+			virus.Execute();
 		}
 
 		private void GenerateGameTasks(int amountOfTasksToCreate)
