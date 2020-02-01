@@ -36,7 +36,7 @@ namespace Game.Console.Commands
 
 		public void Help()
 		{
-			GameConsole.instance.Log("looking for help? too bad");
+			GameConsole.instance.Log("Please contact METASYS HR.");
 		}
 
 		public void CloseApp()

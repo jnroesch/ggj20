@@ -138,7 +138,7 @@ namespace Game
 		/// </summary>
 		public void GameOver()
 		{
-			console.Log("GAME OVER");
+			console.Log("METASYS ARK is in CRITICAL CONDITION. Your productivity score has been noted. Goodbye.");
 			timer.StopTimer();
 			//print to console that game is over
 

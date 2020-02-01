@@ -12,7 +12,7 @@ namespace Game.Console
         public TMP_Text directoryText;
 
         private string[] lines;
-        private float delay = .05f;
+        private float delay = .03f;
 
         public void SetText(string text)
         {

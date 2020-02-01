@@ -32,16 +32,15 @@ namespace Game.Console
         {
             while (timeLeft > 0)
             {
-                console.Log(timeLeft.ToString());
-                yield return new WaitForSeconds(1);
-                timeLeft--;
+                if (timeLeft == 20) console.Log("Your debugging budget for today is: " + timeLeft.ToString() + " SECONDS. STARTING NOW.");
+                if (timeLeft == 15) console.Log(timeLeft.ToString() + " SECONDS LEFT. Please remain productive.");
+                if (timeLeft == 10) console.Log(timeLeft.ToString() + " SECONDS. Eliminate all distractions.");
+                if (timeLeft <= 5) console.Log(timeLeft.ToString() + " SECONDS. Concentrate.");
 
-				if(timeLeft == 10)
-				{
-					GameManager.Instance.ExecuteVirusAction();
-				}
+                int step = timeLeft > 5 ? 5 : 1;
+                yield return new WaitForSeconds(step);
+                timeLeft -= step;
             }
-
             GameManager.Instance.GameOver();
         }
     }
