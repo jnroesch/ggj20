@@ -36,12 +36,12 @@ namespace Game.Tasks.FileTasks
 			int index = random.Next(options.Count);
 			_fileName = options[index];
 
-			MonobehaviorUtil.Instance.Write("One file is missing in filesystem: " + _fileName);
+			GameManager.Instance.LogToConsole("One file is missing in filesystem: " + _fileName);
 		}
 
 		public override void WinTask()
 		{
-			MonobehaviorUtil.Instance.Write("File has been restored - Good Job!");
+			GameManager.Instance.LogToConsole("File has been restored - Good Job!");
 			GameManager.Instance.FinishCurrentTask();
 		}
 	}

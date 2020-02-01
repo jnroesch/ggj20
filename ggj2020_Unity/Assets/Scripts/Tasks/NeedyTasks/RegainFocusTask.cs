@@ -10,22 +10,22 @@ namespace Game.Tasks.NeedyTasks
 	{
 		public override void FailTask()
 		{
-			MonobehaviorUtil.Instance.Write("failed task");
+			GameManager.Instance.LogToConsole("failed task");
 		}
 
 		public override bool IsCompleted()
 		{
-			throw new System.NotImplementedException();
+			return GameManager.Instance.IsInFocus;
 		}
 
 		public override void StartTask()
 		{
-			MonobehaviorUtil.Instance.Write("Please regain focus in console");
+			GameManager.Instance.LogToConsole("Please regain focus in console");
 		}
 
 		public override void WinTask()
 		{
-			MonobehaviorUtil.Instance.Write("needy task completed");
+			GameManager.Instance.LogToConsole("needy task completed");
 			GameManager.Instance.FinishCurrentTask();
 		}
 	}

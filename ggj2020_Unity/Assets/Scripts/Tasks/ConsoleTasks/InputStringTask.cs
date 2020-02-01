@@ -12,7 +12,7 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void FailTask()
 		{
-			MonobehaviorUtil.Instance.Write("That was the wrong command you idiot");
+			GameManager.Instance.LogToConsole("That was the wrong command you idiot");
 		}
 
 		public override bool IsCompleted()
@@ -23,12 +23,12 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void StartTask()
 		{
-			MonobehaviorUtil.Instance.Write("Please type in the following command: " + _textToInput);
+			GameManager.Instance.LogToConsole("Please type in the following command: " + _textToInput);
 		}
 
 		public override void WinTask()
 		{
-			MonobehaviorUtil.Instance.Write("well done");
+			GameManager.Instance.LogToConsole("well done");
 			GameManager.Instance.FinishCurrentTask();
 		}
 	}

@@ -26,12 +26,12 @@ namespace Game.Tasks.FileTasks
 		{
 			File.Create(Path.Combine(Application.persistentDataPath, _fileName));
 
-			MonobehaviorUtil.Instance.Write("The virus created a malicious file: " + _fileName);
+			GameManager.Instance.LogToConsole("The virus created a malicious file: " + _fileName);
 		}
 
 		public override void WinTask()
 		{
-			MonobehaviorUtil.Instance.Write("well done");
+			GameManager.Instance.LogToConsole("well done");
 			GameManager.Instance.FinishCurrentTask();
 		}
 	}

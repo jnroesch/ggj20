@@ -30,9 +30,13 @@ namespace Game
 
 		private GameTask _currentTask;
 
+		public bool IsInFocus;
+
 		private void Awake()
 		{
 			Instance = this;
+
+			IsInFocus = true;
 		}
 
 		void Start()
@@ -137,6 +141,16 @@ namespace Game
 		public string GetLastConsoleInput()
 		{
 			return console.GetLastLogEntryString();
+		}
+
+		private void OnApplicationFocus(bool focus)
+		{
+			IsInFocus = focus;
+		}
+
+		public void LogToConsole(string text)
+		{
+			console.Log(text);
 		}
 	}
 }
