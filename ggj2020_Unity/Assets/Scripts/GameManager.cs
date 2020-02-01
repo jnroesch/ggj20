@@ -33,11 +33,14 @@ namespace Game
 
 		public bool IsInFocus;
 
+		private bool gameHasEnded;
+
 		private void Awake()
 		{
 			Instance = this;
 
 			IsInFocus = true;
+			gameHasEnded = true;
 
 			Screen.fullScreenMode = FullScreenMode.Windowed;
 			Screen.SetResolution(640, 400, false);
@@ -56,22 +59,17 @@ namespace Game
 
 		void Start()
 		{
-			console.Log("hello player, press space to start");
+			console.Log("hello player, press return to start");
 
 			//TODO: select difficulty at start of the game
-			_difficulty = Difficulty.Medium;
-
-			var stuff = new OpenRandomFolderVirus();
-			stuff.Execute();
-
-			GenerateGameTasks((int)_difficulty + 1);
+			_difficulty = Difficulty.Medium;	
 		}
 
 		private void Update()
 		{
-			if(_currentTask == null)
+			if(_currentTask == null || gameHasEnded)
 			{
-				if (Input.GetKeyDown(KeyCode.Space))
+				if (Input.GetKeyDown(KeyCode.Return))
 				{
 					StartGame();
 				}
@@ -108,6 +106,8 @@ namespace Game
 		/// </summary>
 		public void StartGame()
 		{
+			GenerateGameTasks((int)_difficulty + 1);
+			gameHasEnded = false;
 			timer.StartTimer();
 			StartNewTask();
 		}
@@ -138,7 +138,9 @@ namespace Game
 		/// </summary>
 		public void GameOver()
 		{
+			gameHasEnded = true;
 			console.Log("GAME OVER");
+			console.Log("press return to try again");
 			timer.StopTimer();
 			//print to console that game is over
 

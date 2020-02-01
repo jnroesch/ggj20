@@ -7,7 +7,8 @@ namespace Game.Console
 {
     public class Timer : MonoBehaviour
     {
-        private int timeLeft = 20;
+		private const int totalTime = 20;
+        private int timeLeft;
         private GameConsole console;
 
 		private IEnumerator timerCoroutine;
@@ -19,7 +20,8 @@ namespace Game.Console
 
         public void StartTimer()
         {
-            timerCoroutine = TimerRoutine();
+			timeLeft = totalTime;
+			timerCoroutine = TimerRoutine();
 			StartCoroutine(timerCoroutine);
         }
 
