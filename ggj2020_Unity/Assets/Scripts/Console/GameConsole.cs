@@ -14,6 +14,7 @@ namespace Game.Console
         public Transform logEntryParent;
 
         private List<LogEntry> logEntries = new List<LogEntry>();
+        private int currentLogEntryInt;
         private LogEntry logEntry;
         private TMP_InputField inputField;
 
@@ -24,12 +25,41 @@ namespace Game.Console
         {
             instance = this;
 
-            SetUpLogEntry();
+            CreateNewInputEntry();
         }
 
         private void Update()
         {
             ForceInputFieldFocus();
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                SelectLastCommand();
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                SlelectNextCommand();
+            }
+        }
+
+        private void SelectLastCommand()
+        {
+            if (currentLogEntryInt - 1 >= 0)
+            {
+                currentLogEntryInt--;
+                inputField.text = logEntries[currentLogEntryInt].GetText();
+                inputField.caretPosition = inputField.text.Length;
+            }
+        }
+
+        private void SlelectNextCommand()
+        {
+            if (currentLogEntryInt + 1 < logEntries.Count)
+            {
+                currentLogEntryInt++;
+                inputField.text = logEntries[currentLogEntryInt].GetText();
+                inputField.caretPosition = inputField.text.Length;
+            }
         }
 
         private void ForceInputFieldFocus()
@@ -41,7 +71,7 @@ namespace Game.Console
             }
         }
 
-        private void SetUpLogEntry()
+        private void CreateNewInputEntry()
         {
             logEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
             inputField = logEntry.GetComponentInChildren<TMP_InputField>();
@@ -51,17 +81,19 @@ namespace Game.Console
 
         private void Submit()
         {
-            CreateLogEntry();
+            CreateNewLogEntry();
             OnNewSubmission?.Invoke();
         }
 
-        public void CreateLogEntry()
+        public void CreateNewLogEntry()
         {
             logEntries.Add(logEntry);
+            currentLogEntryInt = logEntries.Count;
+            print(currentLogEntryInt);
             inputField.onValueChanged.RemoveAllListeners();
             inputField.interactable = false;
 
-            SetUpLogEntry();
+            CreateNewInputEntry();
         }
 
         public void Log(string text)
