@@ -8,30 +8,30 @@ namespace Game.Console
 {
     public class LogEntry : MonoBehaviour
     {
-        public TMP_InputField inputField;
-        public TMP_Text directoryText;
+        public Text LogEntryText;
+        public Text LogEntryDirectory;
 
         private string[] lines;
         private float delay = .03f;
 
         public void SetText(string text)
         {
-            inputField.text = text;
+            LogEntryText.text = text;
         }
 
         public string GetText()
         {
-            return inputField.text;
+            return LogEntryText.text;
         }
 
         public void SetDirectoryText(string text)
         {
-            directoryText.text = text;
+            LogEntryDirectory.text = text;
         }
 
         public string GetDirectoryText()
         {
-            return directoryText.text;
+            return LogEntryDirectory.text;
         }
 
         public void SetTextGameBoy(string text)
@@ -45,7 +45,7 @@ namespace Game.Console
 
             for (int i = 0; i < text.Length; i++)
             {
-                inputField.text += text[i];
+                LogEntryText.text += text[i];
                 yield return new WaitForSeconds(delay);
             }
         }

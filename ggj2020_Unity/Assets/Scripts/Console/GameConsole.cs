@@ -12,14 +12,26 @@ namespace Game.Console
 
         public GameObject logEntryPrefab;
         public Transform logEntryParent;
+        public TMP_InputField inputField;
 
         private List<LogEntry> logEntries = new List<LogEntry>();
         private int currentLogEntryInt;
         private LogEntry logEntry;
-        private TMP_InputField inputField;
+        private Text textField;
 
         public delegate void GameConsoleEvent();
         public GameConsoleEvent OnNewSubmission;
+
+        private void OnEnable()
+        {
+            inputField.onSubmit.AddListener(delegate { Submit(); });
+            inputField.onValueChanged.AddListener(delegate { UpdateTextField(); });
+        }
+
+        private void OnDisable()
+        {
+            inputField.onSubmit.RemoveAllListeners();
+        }
 
         private void Awake()
         {
@@ -42,13 +54,17 @@ namespace Game.Console
             }
         }
 
+        private void UpdateTextField()
+        {
+            textField.text = inputField.text;
+        }
+
         private void SelectLastCommand()
         {
             if (currentLogEntryInt - 1 >= 0)
             {
                 currentLogEntryInt--;
                 inputField.text = logEntries[currentLogEntryInt].GetText();
-                inputField.caretPosition = inputField.text.Length;
             }
         }
 
@@ -58,7 +74,6 @@ namespace Game.Console
             {
                 currentLogEntryInt++;
                 inputField.text = logEntries[currentLogEntryInt].GetText();
-                inputField.caretPosition = inputField.text.Length;
             }
         }
 
@@ -66,6 +81,7 @@ namespace Game.Console
         {
             if (!inputField.isFocused)
             {
+                print("force focus");
                 inputField.ActivateInputField();
                 inputField.caretPosition = inputField.text.Length;
             }
@@ -74,9 +90,8 @@ namespace Game.Console
         private void CreateNewInputEntry()
         {
             logEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
-            inputField = logEntry.GetComponentInChildren<TMP_InputField>();
-            inputField.onSubmit.AddListener(delegate { Submit(); });
-            inputField.ActivateInputField();
+            textField = logEntry.GetComponentInChildren<Text>();
+            inputField.text = "";
         }
 
         private void Submit()
@@ -89,8 +104,6 @@ namespace Game.Console
         {
             logEntries.Add(logEntry);
             currentLogEntryInt = logEntries.Count;
-            inputField.onValueChanged.RemoveAllListeners();
-            inputField.interactable = false;
 
             CreateNewInputEntry();
         }
@@ -98,10 +111,8 @@ namespace Game.Console
         public void Log(string text)
         {
             LogEntry autoLogEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
-            autoLogEntry.GetComponentInChildren<TMP_InputField>().interactable = false;
             autoLogEntry.SetTextGameBoy(text);
             autoLogEntry.SetDirectoryText("");
-
             logEntry.transform.SetAsLastSibling();
         }
 
