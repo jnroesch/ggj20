@@ -18,7 +18,7 @@ namespace Game.Console
         // Start is called before the first frame update
         void Start()
         {
-        
+            StartTimer();
         }
 
         public void StartTimer()
@@ -35,7 +35,7 @@ namespace Game.Console
                 timeLeft--;
             }
 
+            GameManager.Instance.GameOver();
         }
     }
-
 }

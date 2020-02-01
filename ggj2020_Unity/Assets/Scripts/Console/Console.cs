@@ -11,6 +11,7 @@ namespace Game.Console
         public GameObject logEntryPrefab;
         public Transform logEntryParent;
 
+        private LogEntry logEntry;
         private TMP_InputField inputField;
 
         private void Awake()
@@ -20,7 +21,8 @@ namespace Game.Console
 
         private void SetUpLogEntry()
         {
-            inputField = Instantiate(logEntryPrefab, logEntryParent).GetComponentInChildren<TMP_InputField>();
+            logEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
+            inputField = logEntry.GetComponentInChildren<TMP_InputField>();
             inputField.onSubmit.AddListener(delegate { Submit(); });
             inputField.ActivateInputField();
         }
@@ -40,9 +42,11 @@ namespace Game.Console
 
         public void Log(string text)
         {
-            LogEntry logEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
-            logEntry.GetComponentInChildren<TMP_InputField>().interactable = false;
-            logEntry.SetText(text);
+            LogEntry autoLogEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
+            autoLogEntry.GetComponentInChildren<TMP_InputField>().interactable = false;
+            autoLogEntry.SetText(text);
+
+            logEntry.transform.SetAsLastSibling();
         }
 
         private void OnApplicationFocus(bool focus)
