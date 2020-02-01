@@ -1,30 +1,11 @@
-﻿using Game.Requirements;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿
 namespace Game.Tasks.Abstract
 {
-	public class ConsoleTask : GameTask
+	public abstract class ConsoleTask : GameTask
 	{
-		public ConsoleTask(List<TaskRequirement> requirements) : base(requirements)
+		public ConsoleTask() : base()
 		{
 
-		}
-
-		public override void StartTask()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public override void WinTask()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public override void FailTask()
-		{
-			throw new System.NotImplementedException();
 		}
 	}
 }
