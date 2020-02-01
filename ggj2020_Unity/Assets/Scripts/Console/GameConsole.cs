@@ -100,7 +100,7 @@ namespace Game.Console
         {
             LogEntry autoLogEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
             autoLogEntry.GetComponentInChildren<TMP_InputField>().interactable = false;
-            autoLogEntry.SetText(text);
+            autoLogEntry.SetTextGameBoy(text);
             autoLogEntry.SetDirectoryText("");
 
             logEntry.transform.SetAsLastSibling();
