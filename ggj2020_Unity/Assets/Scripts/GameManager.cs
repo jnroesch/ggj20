@@ -71,11 +71,29 @@ namespace Game
 				return;
 			}
 
-			if (_currentTask.IsCompleted())
+			switch (_currentTask)
 			{
+				case FileTask task:
+					if (task.IsCompleted())
+					{
 
-				_currentTask.WinTask();
+						task.WinTask();
+					}
+					break;
+
+				case ConsoleTask task:
+					//handled in the task itself
+					break;
+
+				case NeedyTask task:
+					if (task.IsCompleted())
+					{
+
+						task.WinTask();
+					}
+					break;
 			}
+			
 		}
 
 		/// <summary>

@@ -3,18 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using UnityEngine;
 
 namespace Game
 {
 	public class TaskGenerator
 	{
+		private System.Random _random;
+
+		public TaskGenerator()
+		{
+			_random = new System.Random();
+		}
+
 		public GameTask CreateRandomTask()
 		{
-			var random = new System.Random();
-
 			//update number depending on possible types
-			var randomValue = random.Next(3);
+			var randomValue = _random.Next(3);
 
 			switch (randomValue)
 			{
@@ -58,9 +62,7 @@ namespace Game
 		private GameTask GetRandomTask(string nameSpace)
 		{
 			var possibleTasks = GetTypes(nameSpace).ToList();
-
-			var random = new System.Random();
-			var index = random.Next(possibleTasks.Count());
+			var index = _random.Next(possibleTasks.Count());
 
 			return (GameTask)Activator.CreateInstance(possibleTasks[index]);
 		}

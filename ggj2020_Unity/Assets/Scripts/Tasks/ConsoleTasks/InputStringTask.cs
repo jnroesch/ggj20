@@ -1,4 +1,5 @@
-﻿using Game.Tasks.Abstract;
+﻿using Game.Console;
+using Game.Tasks.Abstract;
 using Game.Utils;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,16 @@ namespace Game.Tasks.ConsoleTasks
 	public class InputStringTask : ConsoleTask
 	{
 		private string _textToInput = "passwrod";
+
+		public InputStringTask()
+		{
+			GameConsole.instance.OnNewSubmission += OnConsoleInput;
+		}
+
+		~InputStringTask()
+		{
+			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
+		}
 
 		public override void FailTask()
 		{
@@ -30,6 +41,14 @@ namespace Game.Tasks.ConsoleTasks
 		{
 			GameManager.Instance.LogToConsole("well done");
 			GameManager.Instance.FinishCurrentTask();
+		}
+
+		private void OnConsoleInput()
+		{
+			if (IsCompleted())
+			{
+				WinTask();
+			}
 		}
 	}
 }
