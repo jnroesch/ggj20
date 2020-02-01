@@ -27,6 +27,20 @@ namespace Game.Console
             SetUpLogEntry();
         }
 
+        private void Update()
+        {
+            ForceInputFieldFocus();
+        }
+
+        private void ForceInputFieldFocus()
+        {
+            if (!inputField.isFocused)
+            {
+                inputField.ActivateInputField();
+                inputField.caretPosition = inputField.text.Length;
+            }
+        }
+
         private void SetUpLogEntry()
         {
             logEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
