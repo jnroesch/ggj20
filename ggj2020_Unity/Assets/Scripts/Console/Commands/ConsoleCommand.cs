@@ -36,12 +36,23 @@ namespace Game.Console.Commands
 
 		public void Help()
 		{
-			GameConsole.instance.Log("Please contact METASYS HR.");
+			string helpText = @"files - show external files
+				local - show local files
+				quit - close app
+				easy, medium, hard";
+			GameConsole.instance.Log(helpText);
+
 		}
 
 		public void CloseApp()
 		{
 			Application.Quit();
+		}
+
+		public void ChangeDifficulty(int newValue)
+		{
+			GameConsole.instance.Log("Changed difficulty to "+(Difficulty)newValue + " for next round");
+			GameManager.Instance.difficulty = (Difficulty)newValue;
 		}
 	}
 }

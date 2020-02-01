@@ -38,7 +38,7 @@ namespace Game.Tasks.ConsoleTasks
 		{
 			imageTasks = Resources.LoadAll<ImageTaskSO>("");
 
-			int randomInt = Random.Range(0, imageTasks.Length + 1);
+			int randomInt = Random.Range(0, imageTasks.Length);
 			myImageTask = imageTasks[randomInt];
 
 			GameConsole.instance.Log(myImageTask.startText);
