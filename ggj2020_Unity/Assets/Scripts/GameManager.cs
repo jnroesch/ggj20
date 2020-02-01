@@ -7,6 +7,7 @@ using Game.Console.Commands;
 using Game.Console;
 using Game.Virus;
 using Game.Tasks.FileTasks;
+using Game.Tasks.ConsoleTasks;
 
 namespace Game
 {
@@ -28,7 +29,7 @@ namespace Game
 		private Timer timer;
 
 		private Stack<GameTask> _gameTasks;
-		private Difficulty _difficulty;
+		public Difficulty difficulty;
 
 		private GameTask _currentTask;
 
@@ -59,20 +60,15 @@ namespace Game
 
 		void Start()
 		{
-			console.Log("hello player, press return to start");
+			console.Log("hello player, press return to start, type help for more info");
 
-			//TODO: select difficulty at start of the game
-			_difficulty = Difficulty.Medium;	
+			difficulty = Difficulty.Medium;	
 		}
 
 		private void Update()
 		{
 			if(_currentTask == null || gameHasEnded)
 			{
-				if (Input.GetKeyDown(KeyCode.Return))
-				{
-					StartGame();
-				}
 				return;
 			}
 
@@ -106,7 +102,7 @@ namespace Game
 		/// </summary>
 		public void StartGame()
 		{
-			GenerateGameTasks((int)_difficulty + 1);
+			GenerateGameTasks((int)difficulty + 1);
 			gameHasEnded = false;
 			timer.StartTimer();
 			StartNewTask();
@@ -142,6 +138,8 @@ namespace Game
 			gameHasEnded = true;
 			console.Log("METASYS ARK is in CRITICAL CONDITION. Your productivity score has been noted. Goodbye.");
 			console.Log("PRESS RETURN to continue your METASYS employment.");
+			_currentTask = null;
+			_gameTasks.Clear();
 			timer.StopTimer();
 
 			//reset or use existing folder states?
@@ -159,7 +157,8 @@ namespace Game
 		{
 			string currentCommand = GetLastConsoleInput();
 
-			if (string.IsNullOrWhiteSpace(currentCommand))
+			//ignore empty commands after game has started
+			if (_currentTask != null && string.IsNullOrWhiteSpace(currentCommand))
 			{
 				return;
 			}
@@ -168,11 +167,30 @@ namespace Game
 
 			foreach (var command in commands)
 			{
-				if (string.Equals(command.Command, currentCommand, System.StringComparison.OrdinalIgnoreCase))
+				foreach(var variant in command.Variants)
 				{
-					command.action.Invoke();
-					return;
+					if (string.Equals(variant, currentCommand, System.StringComparison.OrdinalIgnoreCase))
+					{
+						command.action.Invoke();
+						return;
+					}
 				}
+			}
+
+			//game did not yet start
+			if (_currentTask == null)
+			{
+				if (Input.GetKeyDown(KeyCode.Return))
+				{
+					StartGame();
+				}
+				return;
+			}
+
+			if(_currentTask is ConsoleTask)
+			{
+				//do not harm the player on wrong input
+				return;
 			}
 
 			var virusCreator = new VirusGenerator();

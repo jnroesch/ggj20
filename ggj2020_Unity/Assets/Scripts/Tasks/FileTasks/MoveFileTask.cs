@@ -13,10 +13,17 @@ namespace Game.Tasks.FileTasks
 		public MoveFileTask()
 		{
 			var files = Directory.GetFiles(Application.persistentDataPath);
-
-			var random = new System.Random();
-			var index = random.Next(files.Length);
-			_fileName = files[index];
+			if (files.Length == 0)
+			{
+				_fileName = "important.xml";
+				File.Create(Path.Combine(Application.persistentDataPath, _fileName));
+			}
+			else
+			{
+				var random = new System.Random();
+				var index = random.Next(files.Length);
+				_fileName = files[index];
+			}
 		}
 
 		public override void FailTask()
