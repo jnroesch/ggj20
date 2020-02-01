@@ -14,13 +14,6 @@ namespace Game.Console.Commands
 
 		public UnityEvent action;
 
-		private GameConsole gameConsole;
-
-		private void Awake()
-		{
-			gameConsole = FindObjectOfType<GameConsole>();
-		}
-
 		public void OpenPersistentDataPath()
 		{
 			var path = Application.persistentDataPath + Path.DirectorySeparatorChar;
@@ -38,7 +31,7 @@ namespace Game.Console.Commands
 
 		public void Help()
 		{
-			gameConsole.Log("looking for help? too bad");
+			GameConsole.instance.Log("looking for help? too bad");
 		}
 	}
 }

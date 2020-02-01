@@ -8,6 +8,8 @@ namespace Game.Console
 {
     public class GameConsole : MonoBehaviour
     {
+        public static GameConsole instance;
+
         public GameObject logEntryPrefab;
         public Transform logEntryParent;
 
@@ -15,8 +17,13 @@ namespace Game.Console
         private LogEntry logEntry;
         private TMP_InputField inputField;
 
+        public delegate void GameConsoleEvent();
+        public GameConsoleEvent OnNewSubmission;
+
         private void Awake()
         {
+            instance = this;
+
             SetUpLogEntry();
         }
 
@@ -31,7 +38,7 @@ namespace Game.Console
         private void Submit()
         {
             CreateLogEntry();
-			GameManager.Instance.CheckForCommands();
+            OnNewSubmission?.Invoke();
         }
 
         public void CreateLogEntry()

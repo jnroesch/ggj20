@@ -37,6 +37,17 @@ namespace Game
 			Instance = this;
 
 			IsInFocus = true;
+
+		}
+
+		private void OnEnable()
+		{
+			console.OnNewSubmission += CheckForCommands;			
+		}
+
+		private void OnDisable()
+		{
+			console.OnNewSubmission -= CheckForCommands;
 		}
 
 		void Start()
