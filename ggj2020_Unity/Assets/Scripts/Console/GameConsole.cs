@@ -54,7 +54,14 @@ namespace Game.Console
 
         public string GetLastLogEntryString()
         {
-            return logEntries[logEntries.Count - 1].GetText();
+            if (logEntries.Count == 0)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return logEntries[logEntries.Count - 1].GetText();
+            }
         }
 
         private void OnApplicationFocus(bool focus)
