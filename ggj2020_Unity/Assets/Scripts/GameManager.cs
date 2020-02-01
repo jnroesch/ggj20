@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using Game.Console.Commands;
 using Game.Console;
+using Game.Virus;
 
 namespace Game
 {
@@ -42,12 +43,14 @@ namespace Game
 
 		private void OnEnable()
 		{
-			console.OnNewSubmission += CheckForCommands;			
+			console.OnNewSubmission += CheckForCommands;
+			console.OnNewSubmission += ExecuteVirusAction;
 		}
 
 		private void OnDisable()
 		{
 			console.OnNewSubmission -= CheckForCommands;
+			console.OnNewSubmission -= ExecuteVirusAction;
 		}
 
 		void Start()
@@ -138,6 +141,13 @@ namespace Game
 			//reset or use existing folder states?
 
 			//press enter to start again
+		}
+
+		public void ExecuteVirusAction()
+		{
+			var virusGenerator = new VirusGenerator();
+			var virus = virusGenerator.CreateRandomVirusAction();
+			virus.Execute();
 		}
 
 		public void CheckForCommands()

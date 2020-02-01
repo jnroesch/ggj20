@@ -54,7 +54,7 @@ namespace Game
 		private IEnumerable<Type> GetTypes(string nameSpace)
 		{
 			var types = from type in Assembly.GetExecutingAssembly().GetTypes()
-					where type.IsClass && type.Namespace == nameSpace
+					where type.IsClass && type.Namespace == nameSpace && !type.IsAbstract
 					select type;
 			return types;
 		}

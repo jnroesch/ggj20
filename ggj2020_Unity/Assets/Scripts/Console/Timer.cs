@@ -35,6 +35,11 @@ namespace Game.Console
                 console.Log(timeLeft.ToString());
                 yield return new WaitForSeconds(1);
                 timeLeft--;
+
+				if(timeLeft == 10)
+				{
+					GameManager.Instance.ExecuteVirusAction();
+				}
             }
 
             GameManager.Instance.GameOver();
