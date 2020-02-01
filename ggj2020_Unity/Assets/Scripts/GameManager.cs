@@ -6,6 +6,7 @@ using System.Linq;
 using Game.Console.Commands;
 using Game.Console;
 using Game.Virus;
+using Game.Tasks.FileTasks;
 
 namespace Game
 {
@@ -157,6 +158,11 @@ namespace Game
 		public void CheckForCommands()
 		{
 			string currentCommand = GetLastConsoleInput();
+
+			if (string.IsNullOrWhiteSpace(currentCommand))
+			{
+				return;
+			}
 
 			var commands = GetComponents<ConsoleCommand>();
 
