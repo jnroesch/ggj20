@@ -10,7 +10,7 @@ namespace Game.Console.Commands
 {
 	public class ConsoleCommand : MonoBehaviour
 	{
-		public string Command;
+		public string[] Variants;
 
 		public UnityEvent action;
 

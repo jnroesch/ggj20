@@ -168,10 +168,13 @@ namespace Game
 
 			foreach (var command in commands)
 			{
-				if (string.Equals(command.Command, currentCommand, System.StringComparison.OrdinalIgnoreCase))
+				foreach(var variant in command.Variants)
 				{
-					command.action.Invoke();
-					return;
+					if (string.Equals(variant, currentCommand, System.StringComparison.OrdinalIgnoreCase))
+					{
+						command.action.Invoke();
+						return;
+					}
 				}
 			}
 
