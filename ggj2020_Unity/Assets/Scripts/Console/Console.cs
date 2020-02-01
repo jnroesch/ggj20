@@ -2,42 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class Console : MonoBehaviour
+namespace Game.Console
 {
-    public GameObject logEntryPrefab;
-    public Transform logEntryParent;
-    public InputField inputField;
-
-    public List<Text> logEntries = new List<Text>();
-
-    private void Awake()
+    public class Console : MonoBehaviour
     {
-        inputField = GetComponent<InputField>();
-        inputField.text = ">";
-    }
+        public GameObject logEntryPrefab;
+        public Transform logEntryParent;
 
-    private void OnApplicationFocus(bool focus)
-    {
-        inputField.ActivateInputField();
-    }
+        private TMP_InputField inputField;
 
-    public void CheckForLineEnd(string currentInputText)
-    {
-        if (currentInputText.EndsWith("\n"))
+        private void Awake()
         {
-            CreateLogEntry(currentInputText);
+            SetUpLogEntry();
         }
-    }
 
-    public void CreateLogEntry(string logEntryText)
-    {
-        Text logEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<Text>();
-        logEntry.text = logEntryText;
+        private void SetUpLogEntry()
+        {
+            inputField = Instantiate(logEntryPrefab, logEntryParent).GetComponentInChildren<TMP_InputField>();
+            inputField.onSubmit.AddListener(delegate { Submit(); });
+            inputField.ActivateInputField();
+        }
 
-        logEntries.Add(logEntry);
+        private void Submit()
+        {
+            CreateLogEntry();
+        }
 
-        inputField.text = ">";
-        //inputField.ActivateInputField();
+        public void CreateLogEntry()
+        {
+            inputField.onValueChanged.RemoveAllListeners();
+            inputField.interactable = false;
+
+            SetUpLogEntry();
+        }
+
+        public void Log(string text)
+        {
+            LogEntry logEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
+            logEntry.GetComponentInChildren<TMP_InputField>().interactable = false;
+            logEntry.SetText(text);
+        }
+
+        private void OnApplicationFocus(bool focus)
+        {
+            if (focus) inputField.ActivateInputField();
+        }
     }
 }
