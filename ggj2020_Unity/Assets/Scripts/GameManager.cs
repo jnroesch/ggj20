@@ -22,6 +22,9 @@ namespace Game
 		[SerializeField]
 		private GameConsole console;
 
+		[SerializeField]
+		private Timer timer;
+
 		private Stack<GameTask> _gameTasks;
 		private Difficulty _difficulty;
 
@@ -34,7 +37,7 @@ namespace Game
 
 		void Start()
 		{
-			console.Log("hello player");
+			console.Log("hello player, press space to start");
 
 			//TODO: select difficulty at start of the game
 			_difficulty = Difficulty.Medium;
@@ -46,6 +49,10 @@ namespace Game
 		{
 			if(_currentTask == null)
 			{
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					StartGame();
+				}
 				return;
 			}
 
@@ -61,6 +68,7 @@ namespace Game
 		/// </summary>
 		public void StartGame()
 		{
+			timer.StartTimer();
 			StartNewTask();
 		}
 

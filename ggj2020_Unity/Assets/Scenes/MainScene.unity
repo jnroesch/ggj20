@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   console: {fileID: 1530740456}
+  timer: {fileID: 1530740455}
 --- !u!4 &247989155
 Transform:
   m_ObjectHideFlags: 0

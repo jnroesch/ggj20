@@ -15,12 +15,6 @@ namespace Game.Console
             console = FindObjectOfType<GameConsole>();
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            StartTimer();
-        }
-
         public void StartTimer()
         {
             StartCoroutine(TimerRoutine());
