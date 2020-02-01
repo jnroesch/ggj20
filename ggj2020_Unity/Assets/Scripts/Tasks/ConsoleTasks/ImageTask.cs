@@ -9,42 +9,24 @@ namespace Game.Tasks.ConsoleTasks
 {
 	public class ImageTask : ConsoleTask
 	{
-		private string _textToInput;
-		//private ImageTaskSO[] imageTasks;
-		//private ImageTaskSO myImageTask;
+		private List<Dictionary<string, string>> options;
+
+		private Dictionary<string, string> option;
 
 		public ImageTask()
 		{
 			GameConsole.instance.OnNewSubmission += OnConsoleInput;
-		}
+			options = new List<Dictionary<string, string>>();
 
-		~ImageTask()
-		{
-			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
-		}
-
-		public override void FailTask()
-		{
-			GameConsole.instance.Log("fail");//myImageTask.failText);
-		}
-
-		public override bool IsCompleted()
-		{
-			var lastInput = GameManager.Instance.GetLastConsoleInput();
-			return string.Equals(lastInput, _textToInput, System.StringComparison.OrdinalIgnoreCase);
-		}
-
-		public override void StartTask()
-		{
-			/*imageTasks = Resources.LoadAll<ImageTaskSO>("");
-
-			var random = new System.Random();
-			int randomInt = random.Next(imageTasks.Length);
-			myImageTask = imageTasks[randomInt];*/
-
-			GameConsole.instance.Log("start");//myImageTask.startText);
-			string stuff = @"
-               &                                                                
+			#region options
+			options.Add(new Dictionary<string, string>()
+			{
+				{"word", "dog" },
+				{"start", "Automatic Error Recognition System broken, please IDENTIFY ANIMAL to recalibrate" },
+				{"win", "who's a good boy?" },
+				{"fail", "calibration failed" },
+				{"image", @"
+                &                                                               
               @@@                                                               
               @@@@.                                                             
            @@@@@@@@@                                                            
@@ -55,7 +37,7 @@ namespace Game.Tasks.ConsoleTasks
    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@            
                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@          
                  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@         
-                  &@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
+				  &@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
                     @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
                       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       
                         @@@@@@@@@@@@@@@@@@@@@@@/       @@@@@@@@@@@@@@@@@@       
@@ -68,13 +50,40 @@ namespace Game.Tasks.ConsoleTasks
                             @@@,@@@@                          @@@@ @@@%         
                             @@@@@@@*                        @@@@@  @@@          
                            @@@@                                    @@@          
-                          @@@                                  @@@@@@          ";
-			GameConsole.instance.Log(stuff);//myImageTask.image);
+                          @@@                                  @@@@@@           "}
+			});
+			#endregion
+
+			var random = new System.Random();
+			int randomInt = random.Next(options.Count);
+			option = options[randomInt]; 
+		}
+
+		~ImageTask()
+		{
+			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
+		}
+
+		public override void FailTask()
+		{
+			GameConsole.instance.Log(option["fail"]);
+		}
+
+		public override bool IsCompleted()
+		{
+			var lastInput = GameManager.Instance.GetLastConsoleInput();
+			return string.Equals(lastInput, option["word"], System.StringComparison.OrdinalIgnoreCase);
+		}
+
+		public override void StartTask()
+		{
+			GameConsole.instance.Log(option["image"]);
+			GameConsole.instance.Log(option["start"]);
 		}
 
 		public override void WinTask()
 		{
-			GameConsole.instance.Log("win");//myImageTask.winText);
+			GameConsole.instance.Log(option["win"]);
 			GameManager.Instance.FinishCurrentTask();
 		}
 
@@ -83,6 +92,10 @@ namespace Game.Tasks.ConsoleTasks
 			if (IsCompleted())
 			{
 				WinTask();
+			}
+			else
+			{
+				FailTask();
 			}
 		}
 	}

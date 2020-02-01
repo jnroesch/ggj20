@@ -23,8 +23,6 @@ namespace Game.Tasks.ConsoleTasks
 
 		public MathTask()
 		{
-			GameConsole.instance.OnNewSubmission += OnConsoleInput;
-
 			var random = new System.Random();
 			int value = random.Next(100);
 			_operation = value < 50 ? Operation.Addition : Operation.Substraction;
@@ -66,12 +64,14 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void StartTask()
 		{
+			GameConsole.instance.OnNewSubmission += OnConsoleInput;
 			string symbol = _operation == Operation.Addition ? "+" : "-";
 			GameConsole.instance.Log($"Time for some math: What is {_number1} {symbol} {_number2}");
 		}
 
 		public override void WinTask()
 		{
+			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
 			GameManager.Instance.LogToConsole("well done");
 			GameManager.Instance.FinishCurrentTask();
 		}
