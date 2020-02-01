@@ -10,6 +10,8 @@ namespace Game.Console
         private int timeLeft = 20;
         private GameConsole console;
 
+		private IEnumerator timerCoroutine;
+
         private void Awake()
         {
             console = FindObjectOfType<GameConsole>();
@@ -17,8 +19,14 @@ namespace Game.Console
 
         public void StartTimer()
         {
-            StartCoroutine(TimerRoutine());
+            timerCoroutine = TimerRoutine();
+			StartCoroutine(timerCoroutine);
         }
+
+		public void StopTimer()
+		{
+			StopCoroutine(timerCoroutine);
+		}
 
         private IEnumerator TimerRoutine()
         {

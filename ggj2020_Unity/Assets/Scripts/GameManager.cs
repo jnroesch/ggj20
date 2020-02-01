@@ -83,6 +83,7 @@ namespace Game
 			if(_gameTasks.Count == 0)
 			{
 				console.Log("A WINNER IS YOU");
+				timer.StopTimer();
 				_currentTask = null;
 				return;
 			}
@@ -98,6 +99,7 @@ namespace Game
 		public void GameOver()
 		{
 			console.Log("GAME OVER");
+			timer.StopTimer();
 			//print to console that game is over
 
 			//reset or use existing folder states?
