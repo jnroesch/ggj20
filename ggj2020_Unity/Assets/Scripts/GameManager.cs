@@ -123,6 +123,7 @@ namespace Game
 			if(_gameTasks.Count == 0)
 			{
 				console.Log("A WINNER IS YOU");
+				console.Log("press return to try again");
 				timer.StopTimer();
 				_currentTask = null;
 				return;
