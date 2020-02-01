@@ -89,7 +89,6 @@ namespace Game.Console
         {
             logEntries.Add(logEntry);
             currentLogEntryInt = logEntries.Count;
-            print(currentLogEntryInt);
             inputField.onValueChanged.RemoveAllListeners();
             inputField.interactable = false;
 
