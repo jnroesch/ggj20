@@ -205,6 +205,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a1a4129a702df48ab2522e84bbb015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1776997110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6849634400522518866, guid: bf50abc408e1d4e42bd0450d3b90ed74,
+    type: 3}
+  m_PrefabInstance: {fileID: 6849634400139350948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776997105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f060fa8dd6a144a9e8f4aa3ac080bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2101027037
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +229,7 @@ GameObject:
   - component: {fileID: 2101027039}
   - component: {fileID: 2101027038}
   - component: {fileID: 2101027041}
+  - component: {fileID: 2101027042}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -310,6 +323,20 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0,
           m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
     m_CallsDirty: 1
+--- !u!114 &2101027042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101027037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e71c11cf11e7754cb0e2bb80be3f137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  console: {fileID: 1776997110}
+  timer: {fileID: 1776997106}
 --- !u!1001 &6849634400139350948
 PrefabInstance:
   m_ObjectHideFlags: 0
