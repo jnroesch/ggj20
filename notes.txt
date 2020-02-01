@@ -3,9 +3,26 @@ ordner verschieben
 files umbenennnen
 human image recognition
 konsolenbefehle
+examine folder (downloads ordner öffnet, man muss nichts weiter machen)
+regain focus to improve productivity
+explorer.exe corrupted please end task
+input passwrod (=passwrod)
+
 
 
 FRAGEN
 schaffen wir mehrere Unity Fenster?
 jede konsole lebt nur fur 20 sec
 zweite unity app in der app
+
+FEATURES
+text to speech für alle konsolen logs
+
+
+LORE
+Welcome Metasys employee number 257.
+There are currently 12588 Engineers repairing this file system. Your subfolder today is... "
+Nach userinput öffnet sich der folder und lets go
+Critical Korruption State reached in ..."
+Your power budget for today...
+Thank you for your productivity
