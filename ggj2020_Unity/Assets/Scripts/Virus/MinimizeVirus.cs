@@ -14,6 +14,7 @@ namespace Game.Virus
 			if(Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen)
 			{
 				Screen.fullScreenMode = FullScreenMode.Windowed;
+				Screen.SetResolution(640, 400, false);
 			}
 			else
 			{

@@ -16,17 +16,22 @@ namespace Game.Console.Commands
 
 		public void OpenPersistentDataPath()
 		{
-			var path = Application.persistentDataPath + Path.DirectorySeparatorChar;
-			path.Replace("/", "\\"); // windows explorer doesn't like forward slashes
-			UnityEngine.Debug.Log(path);
-			
-			Process.Start("explorer.exe", "/open,"+ path);
+			Process.Start(new System.Diagnostics.ProcessStartInfo()
+			{
+				FileName = Application.persistentDataPath,
+				UseShellExecute = true,
+				Verb = "open"
+			});
 		}
 
 		public void OpenDataPath()
 		{
-			var path = "@" + Application.dataPath;
-			Process.Start("explorer.exe", path);
+			System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+			{
+				FileName = Application.dataPath,
+				UseShellExecute = true,
+				Verb = "open"
+			});
 		}
 
 		public void Help()

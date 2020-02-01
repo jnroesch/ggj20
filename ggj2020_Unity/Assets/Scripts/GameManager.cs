@@ -39,18 +39,19 @@ namespace Game
 
 			IsInFocus = true;
 
+			Screen.fullScreenMode = FullScreenMode.Windowed;
+			Screen.SetResolution(640, 400, false);
+
 		}
 
 		private void OnEnable()
 		{
 			console.OnNewSubmission += CheckForCommands;
-			console.OnNewSubmission += ExecuteVirusAction;
 		}
 
 		private void OnDisable()
 		{
 			console.OnNewSubmission -= CheckForCommands;
-			console.OnNewSubmission -= ExecuteVirusAction;
 		}
 
 		void Start()
