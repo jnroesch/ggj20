@@ -8,6 +8,8 @@ namespace Game.Tasks.NeedyTasks
 {
 	public class RegainFocusTask : NeedyTask
 	{
+		private bool hasBeenUnfocused = false;
+
 		public override void FailTask()
 		{
 			GameManager.Instance.LogToConsole("failed task");
@@ -15,7 +17,11 @@ namespace Game.Tasks.NeedyTasks
 
 		public override bool IsCompleted()
 		{
-			return GameManager.Instance.IsInFocus;
+			if(hasBeenUnfocused == false && GameManager.Instance.IsInFocus == false)
+			{
+				hasBeenUnfocused = true;
+			}
+			return GameManager.Instance.IsInFocus && hasBeenUnfocused;
 		}
 
 		public override void StartTask()

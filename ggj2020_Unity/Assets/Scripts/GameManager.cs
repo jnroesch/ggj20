@@ -44,7 +44,6 @@ namespace Game
 
 			Screen.fullScreenMode = FullScreenMode.Windowed;
 			Screen.SetResolution(640, 400, false);
-
 		}
 
 		private void OnEnable()
@@ -182,10 +181,26 @@ namespace Game
 			var taskGenerator = new TaskGenerator();
 			for(int i=0; i< amountOfTasksToCreate; i++)
 			{
-				var newTask = taskGenerator.CreateRandomTask();
-				_gameTasks.Push(newTask);
+				GenerateGameTask(taskGenerator);
 			}
 		}
+
+		private void GenerateGameTask(TaskGenerator taskGenerator)
+		{
+			var newTask = taskGenerator.CreateRandomTask();
+			foreach (var task in _gameTasks)
+			{
+				if (task.GetType() == newTask.GetType())
+				{
+					//if same type already exists, try again and return
+					GenerateGameTask(taskGenerator);
+					return;
+				}
+			}
+			_gameTasks.Push(newTask);
+		}
+
+		
 
 		public string GetLastConsoleInput()
 		{
