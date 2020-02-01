@@ -11,6 +11,7 @@ namespace Game.Console
         public GameObject logEntryPrefab;
         public Transform logEntryParent;
 
+        private List<LogEntry> logEntries = new List<LogEntry>();
         private LogEntry logEntry;
         private TMP_InputField inputField;
 
@@ -35,6 +36,7 @@ namespace Game.Console
 
         public void CreateLogEntry()
         {
+            logEntries.Add(logEntry);
             inputField.onValueChanged.RemoveAllListeners();
             inputField.interactable = false;
 
@@ -48,6 +50,11 @@ namespace Game.Console
             autoLogEntry.SetText(text);
 
             logEntry.transform.SetAsLastSibling();
+        }
+
+        public string GetLastLogEntryString()
+        {
+            return logEntries[logEntries.Count - 1].GetText();
         }
 
         private void OnApplicationFocus(bool focus)
