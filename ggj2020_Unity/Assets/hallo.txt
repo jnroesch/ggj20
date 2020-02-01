@@ -1,0 +1,61 @@
+Mono path[0] = 'C:/Users/jnroe/Desktop/ggj/ggj20/ggj2020_Unity/Builds/Win/ggj2020_Unity_Data/Managed'
+Mono config path = 'C:/Users/jnroe/Desktop/ggj/ggj20/ggj2020_Unity/Builds/Win/MonoBleedingEdge/etc'
+Initialize engine version: 2019.3.0f6 (27ab2135bccf)
+[Subsystems] Discovering subsystems at path C:/Users/jnroe/Desktop/ggj/ggj20/ggj2020_Unity/Builds/Win/ggj2020_Unity_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce 940MX (ID=0x134d)
+    Vendor:   
+    VRAM:     2020 MB
+    Driver:   23.21.13.8857
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.964 seconds
+D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 3.234900 ms
+The referenced script on this Behaviour (Game Object '<null>') is missing! 
+(Filename:  Line: 334)
+
+The referenced script on this Behaviour (Game Object '<null>') is missing! 
+(Filename:  Line: 334)
+
+IndexOutOfRangeException: Index was outside the bounds of the array.
+  at Game.Tasks.ConsoleTasks.ImageTask.StartTask () [0x0001f] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.GameManager.StartNewTask () [0x00011] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.GameManager.StartGame () [0x00020] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.GameManager.CheckForCommands () [0x00077] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.Console.GameConsole.Submit () [0x00010] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.Console.GameConsole.<CreateNewInputEntry>b__14_0 (System.String <p0>) [0x00000] in <7422b123227e433f9139693761a8a29f>:0 
+  at UnityEngine.Events.InvokableCall`1[T1].Invoke (T1 args0) [0x00010] in <81f8687028fe45258b35a0e4d1b5fd5a>:0 
+  at UnityEngine.Events.UnityEvent`1[T0].Invoke (T0 arg0) [0x00025] in <81f8687028fe45258b35a0e4d1b5fd5a>:0 
+  at TMPro.TMP_InputField.SendOnSubmit () [0x00011] in <da811b1eb3a640aeaa5b167799d4f10a>:0 
+  at TMPro.TMP_InputField.OnUpdateSelected (UnityEngine.EventSystems.BaseEventData eventData) [0x0003a] in <da811b1eb3a640aeaa5b167799d4f10a>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IUpdateSelectedHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <c044fd0482ce42e19f89e68512ff5fe7>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) [0x00063] in <c044fd0482ce42e19f89e68512ff5fe7>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:SendUpdateEventToSelectedObject()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename: <7422b123227e433f9139693761a8a29f> Line: 0)
+
+IndexOutOfRangeException: Index was outside the bounds of the array.
+  at Game.Tasks.ConsoleTasks.ImageTask.StartTask () [0x0001f] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.GameManager.StartNewTask () [0x00011] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.GameManager.FinishCurrentTask () [0x00050] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.Tasks.NeedyTasks.RegainFocusTask.WinTask () [0x0000f] in <7422b123227e433f9139693761a8a29f>:0 
+  at Game.GameManager.Update () [0x0005b] in <7422b123227e433f9139693761a8a29f>:0 
+ 
+(Filename: <7422b123227e433f9139693761a8a29f> Line: 0)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 68e0 -> priority: 1 
+  Thread -> id: 6fa0 -> priority: 1 

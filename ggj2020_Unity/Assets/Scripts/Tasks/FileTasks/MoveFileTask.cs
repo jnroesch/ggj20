@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Tasks.FileTasks
@@ -22,7 +23,7 @@ namespace Game.Tasks.FileTasks
 			{
 				var random = new System.Random();
 				var index = random.Next(files.Length);
-				_fileName = files[index];
+				_fileName = files[index].Split(new char[] { '/', '\\' }).Last();
 			}
 		}
 

@@ -36,7 +36,8 @@ namespace Game.Console.Commands
 
 		public void Help()
 		{
-			string helpText = @"files - show external files
+			string helpText =
+				@"files - show external files
 				local - show local files
 				quit - close app
 				easy, medium, hard";

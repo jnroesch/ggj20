@@ -46,7 +46,7 @@ namespace Game.Console
             for (int i = 0; i < text.Length; i++)
             {
                 LogEntryText.text += text[i];
-                yield return new WaitForSeconds(delay);
+                //yield return new WaitForSeconds(delay);
             }
         }
     }

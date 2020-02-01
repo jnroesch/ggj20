@@ -207,6 +207,8 @@ namespace Game
 			{
 				GenerateGameTask(taskGenerator);
 			}
+
+			_gameTasks.Push(new ImageTask());
 		}
 
 		private void GenerateGameTask(TaskGenerator taskGenerator)

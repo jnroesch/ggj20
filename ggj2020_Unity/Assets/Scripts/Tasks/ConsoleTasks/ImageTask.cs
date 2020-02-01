@@ -10,8 +10,8 @@ namespace Game.Tasks.ConsoleTasks
 	public class ImageTask : ConsoleTask
 	{
 		private string _textToInput;
-		private ImageTaskSO[] imageTasks;
-		private ImageTaskSO myImageTask;
+		//private ImageTaskSO[] imageTasks;
+		//private ImageTaskSO myImageTask;
 
 		public ImageTask()
 		{
@@ -25,7 +25,7 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void FailTask()
 		{
-			GameConsole.instance.Log(myImageTask.failText);
+			GameConsole.instance.Log("fail");//myImageTask.failText);
 		}
 
 		public override bool IsCompleted()
@@ -36,18 +36,45 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void StartTask()
 		{
-			imageTasks = Resources.LoadAll<ImageTaskSO>("");
+			/*imageTasks = Resources.LoadAll<ImageTaskSO>("");
 
-			int randomInt = Random.Range(0, imageTasks.Length);
-			myImageTask = imageTasks[randomInt];
+			var random = new System.Random();
+			int randomInt = random.Next(imageTasks.Length);
+			myImageTask = imageTasks[randomInt];*/
 
-			GameConsole.instance.Log(myImageTask.startText);
-			GameConsole.instance.Log(myImageTask.image);
+			GameConsole.instance.Log("start");//myImageTask.startText);
+			string stuff = @"
+               &                                                                
+              @@@                                                               
+              @@@@.                                                             
+           @@@@@@@@@                                                            
+         @@@@@@@@@@@@@@                                                         
+       ,@@@@@@@@@@@@@@@@@@                                                      
+ /@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.                                                
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                
+   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@            
+               @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@          
+                 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@         
+                  &@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
+                    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
+                      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@       
+                        @@@@@@@@@@@@@@@@@@@@@@@/       @@@@@@@@@@@@@@@@@@       
+						 /@@@@@@@@@@@@@@                #@@@@@@@@@@@@&@@@       
+                           @@@@@@@@                       @@@@@@@@@@  @@@@      
+                           @@@@@@@@                        @@@@@@@@@   @@@@@%   
+                            @@@@@@@                          @@@@@@@     @@@@@@@
+                            @@@@@@@                           @@@@@@@@     @@@@@
+                            @@@@@@@%                          @@@@@@@@          
+                            @@@,@@@@                          @@@@ @@@%         
+                            @@@@@@@*                        @@@@@  @@@          
+                           @@@@                                    @@@          
+                          @@@                                  @@@@@@          ";
+			GameConsole.instance.Log(stuff);//myImageTask.image);
 		}
 
 		public override void WinTask()
 		{
-			GameConsole.instance.Log(myImageTask.winText);
+			GameConsole.instance.Log("win");//myImageTask.winText);
 			GameManager.Instance.FinishCurrentTask();
 		}
 
