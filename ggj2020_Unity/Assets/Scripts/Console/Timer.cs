@@ -8,11 +8,11 @@ namespace Game.Console
     public class Timer : MonoBehaviour
     {
         private int timeLeft = 20;
-        private Console console;
+        private GameConsole console;
 
         private void Awake()
         {
-            console = FindObjectOfType<Console>();
+            console = FindObjectOfType<GameConsole>();
         }
 
         // Start is called before the first frame update

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Game.Console.Commands;
+using Game.Console;
 
 namespace Game
 {
@@ -18,7 +19,8 @@ namespace Game
 	{
 		public static GameManager Instance;
 
-		//reference to console object
+		[SerializeField]
+		private GameConsole console;
 
 		private Stack<GameTask> _gameTasks;
 		private Difficulty _difficulty;
@@ -32,24 +34,12 @@ namespace Game
 
 		void Start()
 		{
-			//TODO: print stuff to console to welcome player
+			console.Log("hello player");
 
 			//TODO: select difficulty at start of the game
 			_difficulty = Difficulty.Medium;
 
 			GenerateGameTasks((int)_difficulty + 1);
-
-
-			//TODO: remove, only for testing
-			string currentCommand = "help";
-			var commands = GetComponents<ConsoleCommand>();
-			foreach(var command in commands)
-			{
-				if(string.Equals(command.Command, currentCommand, System.StringComparison.OrdinalIgnoreCase))
-				{
-					command.action.Invoke();
-				}
-			}
 		}
 
 		private void Update()
@@ -84,12 +74,12 @@ namespace Game
 		{
 			if(_gameTasks.Count == 0)
 			{
-				Debug.Log("A WINNER IS YOU");
+				console.Log("A WINNER IS YOU");
 				_currentTask = null;
 				return;
 			}
 
-			Debug.Log("... but wait, there is more");
+			console.Log("... but wait, there is more");
 
 			StartNewTask();
 		}
@@ -99,11 +89,27 @@ namespace Game
 		/// </summary>
 		public void GameOver()
 		{
+			console.Log("GAME OVER");
 			//print to console that game is over
 
 			//reset or use existing folder states?
 
 			//press enter to start again
+		}
+
+		public void CheckForCommands()
+		{
+			string currentCommand = GetLastConsoleInput();
+
+			var commands = GetComponents<ConsoleCommand>();
+
+			foreach (var command in commands)
+			{
+				if (string.Equals(command.Command, currentCommand, System.StringComparison.OrdinalIgnoreCase))
+				{
+					command.action.Invoke();
+				}
+			}
 		}
 
 		private void GenerateGameTasks(int amountOfTasksToCreate)
@@ -120,7 +126,8 @@ namespace Game
 
 		public string GetLastConsoleInput()
 		{
-			return "temp";
+			//TODO: use console to get last input
+			return string.Empty;
 		}
 	}
 }

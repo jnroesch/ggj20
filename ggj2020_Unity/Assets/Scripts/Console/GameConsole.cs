@@ -6,7 +6,7 @@ using TMPro;
 
 namespace Game.Console
 {
-    public class Console : MonoBehaviour
+    public class GameConsole : MonoBehaviour
     {
         public GameObject logEntryPrefab;
         public Transform logEntryParent;
@@ -30,6 +30,7 @@ namespace Game.Console
         private void Submit()
         {
             CreateLogEntry();
+			GameManager.Instance.CheckForCommands();
         }
 
         public void CreateLogEntry()
