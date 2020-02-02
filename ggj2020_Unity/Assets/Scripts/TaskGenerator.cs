@@ -58,8 +58,9 @@ namespace Game
 
 		private GameTask GetRandomTask(string nameSpace)
 		{
-			var possibleTasks = GetTypes(nameSpace).ToList();
-			var index = _random.Next(possibleTasks.Count());
+			//lol random hack for the moveFileTast that has a ghost item instantiated sometimes for whatever reason
+			var possibleTasks = GetTypes(nameSpace).Where(entry => !entry.FullName.Split(new char[]{ '.', '/'}, '\\').Last().Contains("<")).ToList();
+			var index = _random.Next(possibleTasks.Count());		
 
 			return (GameTask)Activator.CreateInstance(possibleTasks[index]);
 		}
