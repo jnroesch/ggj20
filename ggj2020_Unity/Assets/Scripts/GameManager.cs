@@ -40,6 +40,8 @@ namespace Game
 
 		private bool playedFirstRound;
 
+		public bool IsConsoleBlocked => _currentTask is NeedyTask;
+
 		private void Awake()
 		{
 			Instance = this;
