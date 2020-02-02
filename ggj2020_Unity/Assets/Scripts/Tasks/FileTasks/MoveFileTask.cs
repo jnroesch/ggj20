@@ -47,6 +47,8 @@ namespace Game.Tasks.FileTasks
 
 		public override void WinTask()
 		{
+			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
+
 			GameManager.Instance.LogToConsole("files have been correctly moved");
 			GameManager.Instance.FinishCurrentTask();
 		}

@@ -45,10 +45,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 7922068515572136440}
+  SubmitSound: {fileID: 8300000, guid: e5dfdbcbdbd900a4db62fedf9db7a8e1, type: 3}
   StartUp: {fileID: 8300000, guid: 928987d4b2339a84ab56507156f93c7c, type: 3}
   BackgroundMusic: {fileID: 8300000, guid: 437c65f367cd3ef42a844fe8abe92d9a, type: 3}
-  TimerBeep: {fileID: 8300000, guid: 76284ac8a22fe3c468f20309d0abe988, type: 3}
-  _randomBeeps: []
+  TimerBeep: {fileID: 8300000, guid: a9cf9e19511cdc04c827a17ba3c77d87, type: 3}
+  GameboyText: {fileID: 8300000, guid: adf68e1057cf7c0449ac9a18bf693dba, type: 3}
+  keyboardSounds:
+  - {fileID: 8300000, guid: 9c7b0338db7a01643bace8aaa5bef6a9, type: 3}
+  _randomBeepsWin:
+  - {fileID: 8300000, guid: b245f22a769369a49b58f50a30265cb6, type: 3}
+  - {fileID: 8300000, guid: 6d67a349fc0073542a0b4889da679d23, type: 3}
+  - {fileID: 8300000, guid: a4b0f51bea92298478712cd41e2d8493, type: 3}
+  - {fileID: 8300000, guid: e6de8030b1ae26a49a79813ca46d57eb, type: 3}
+  - {fileID: 8300000, guid: 76284ac8a22fe3c468f20309d0abe988, type: 3}
+  - {fileID: 8300000, guid: 9fcb28d51449a954db085f17d29e9f3b, type: 3}
+  - {fileID: 8300000, guid: a9cf9e19511cdc04c827a17ba3c77d87, type: 3}
 --- !u!82 &7922068515572136440
 AudioSource:
   m_ObjectHideFlags: 0

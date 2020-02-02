@@ -71,6 +71,8 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void WinTask()
 		{
+			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
+
 			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
 			GameManager.Instance.LogToConsole("well done");
 			GameManager.Instance.FinishCurrentTask();

@@ -671,11 +671,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7922068515572136441, guid: d9e733c98b80105478dad311aee577d0,
-        type: 3}
-      propertyPath: TimerBeep
-      value: 
-      objectReference: {fileID: 8300000, guid: a9cf9e19511cdc04c827a17ba3c77d87, type: 3}
     - target: {fileID: 7922068515572136443, guid: d9e733c98b80105478dad311aee577d0,
         type: 3}
       propertyPath: m_Name

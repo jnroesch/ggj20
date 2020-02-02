@@ -56,6 +56,7 @@ namespace Game.Console
 
         private void UpdateTextField()
         {
+            SFX.Instance.Keyboard();
             textField.text = inputField.text;
         }
 
@@ -81,7 +82,6 @@ namespace Game.Console
         {
             if (!inputField.isFocused)
             {
-                print("force focus");
                 inputField.ActivateInputField();
                 inputField.caretPosition = inputField.text.Length;
             }
@@ -96,6 +96,7 @@ namespace Game.Console
 
         private void Submit()
         {
+            SFX.Instance.PlayOneShot(SFX.Instance.SubmitSound);
             CreateNewLogEntry();
             OnNewSubmission?.Invoke();
         }

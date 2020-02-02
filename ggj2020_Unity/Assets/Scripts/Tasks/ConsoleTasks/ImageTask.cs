@@ -83,6 +83,7 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void WinTask()
 		{
+			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
 			GameConsole.instance.Log(option["win"]);
 			GameManager.Instance.FinishCurrentTask();
 		}

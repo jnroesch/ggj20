@@ -12,7 +12,7 @@ namespace Game.Console
         public Text LogEntryDirectory;
 
         private string[] lines;
-        private float delay = .03f;
+        private float delay = .02f;
 
         public void SetText(string text)
         {
@@ -46,7 +46,8 @@ namespace Game.Console
             for (int i = 0; i < text.Length; i++)
             {
                 LogEntryText.text += text[i];
-                //yield return new WaitForSeconds(delay);
+                SFX.Instance.PlayOneShot(SFX.Instance.GameboyText);
+                yield return new WaitForSeconds(delay);
             }
         }
     }
