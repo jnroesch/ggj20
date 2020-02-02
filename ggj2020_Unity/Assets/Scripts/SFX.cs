@@ -16,6 +16,7 @@ namespace Game
 		public AudioClip BackgroundMusic;
 		public AudioClip TimerBeep;
 		public AudioClip GameboyText;
+		public AudioClip GameOver;
 
 		public AudioClip[] keyboardSounds;
 
@@ -35,6 +36,11 @@ namespace Game
 		public void StartBackgroundMusic()
 		{
 			audioSource.Play();
+		}
+
+		public void PlayGameOverMusic()
+		{
+			PlayOneShot(GameOver);
 		}
 
 		public void StopBackgroundMusic()

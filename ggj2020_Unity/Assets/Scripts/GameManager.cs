@@ -174,6 +174,7 @@ Your termination will be reconsidered.
 		public void GameOver()
 		{
 			SFX.Instance.StopBackgroundMusic();
+			SFX.Instance.PlayGameOverMusic();
 			gameHasEnded = true;
 			console.Log(@"
 METASYS ARK chunksystem integrity is in CRITICAL CONDITION.
