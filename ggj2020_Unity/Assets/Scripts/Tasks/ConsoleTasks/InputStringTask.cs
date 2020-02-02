@@ -53,9 +53,7 @@ Incorrect.");
 			GameManager.Instance.LogToConsole(@"
 Database corrupted... Please spell recovery command: " + _textToInput + @"
 
-
-	TYPE COMMAND.
-		
+	TYPE COMMAND.		
 
 ");
 		}

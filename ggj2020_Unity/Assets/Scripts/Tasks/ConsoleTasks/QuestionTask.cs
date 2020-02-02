@@ -23,9 +23,7 @@ namespace Game.Tasks.ConsoleTasks
 				{"question", @"
 Virus requests permission to be executed?
 
-
 	EXECUTE?
-
 
 " },
 				{"keyAccept", "no" },

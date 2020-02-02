@@ -71,9 +71,7 @@ Difference to correct answer > 0.
 			GameConsole.instance.Log(@"
 Orbit recalculation required. What is: " + $"{_number1} {symbol} {_number2}" + @"
 
-
 	CALCULATE.
-
 
 ");
 		}

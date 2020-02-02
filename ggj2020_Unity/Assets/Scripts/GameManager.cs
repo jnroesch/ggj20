@@ -168,11 +168,12 @@ Your termination will be reconsidered.
 			SFX.Instance.StopBackgroundMusic();
 			gameHasEnded = true;
 			console.Log(@"
-METASYS ARK is in CRITICAL CONDITION.
+METASYS ARK chunksystem integrity is in CRITICAL CONDITION.
+
 Your productivity score has been noted. Goodbye.
 ");
 			console.Log(@"
-	PRESS RETURN to continue your METASYS employment.
+	PRESS <RETURN> to continue your METASYS employment.
 ");
 			_currentTask = null;
 			_gameTasks.Clear();

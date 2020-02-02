@@ -49,9 +49,7 @@ namespace Game.Tasks.FileTasks
 			GameManager.Instance.LogToConsole(@"
 One file is missing in [external]: " + _fileName + @"
 
-
 	CREATE FILE.
-
 
 ");
 		}

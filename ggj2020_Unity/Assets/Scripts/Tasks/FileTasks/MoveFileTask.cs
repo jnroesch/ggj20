@@ -49,9 +49,7 @@ namespace Game.Tasks.FileTasks
 			GameManager.Instance.LogToConsole($@"
 File has been placed in wrong directory. Please move file from [external] to [local]: {_fileName}
 
-
 	MOVE FILE.
-
 
 ");
 		}

@@ -27,11 +27,9 @@ namespace Game.Tasks.NeedyTasks
 		public override void StartTask()
 		{
 			GameManager.Instance.LogToConsole(@"
-Your productivity is decreasing. Please refocus.
-
+Remote console connectivity overload. Please refocus console.
 
 	REFOCUS CONSOLE.
-
 
 ");
 		}
