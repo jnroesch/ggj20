@@ -44,6 +44,11 @@ namespace Game.Console
         {
             ForceInputFieldFocus();
 
+			if (GameManager.Instance.IsConsoleBlocked)
+			{
+				return;
+			}
+
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 SelectLastCommand();
@@ -56,7 +61,12 @@ namespace Game.Console
 
         private void UpdateTextField()
         {
-            SFX.Instance.Keyboard();
+			if (GameManager.Instance.IsConsoleBlocked)
+			{
+				return;
+			}
+
+			SFX.Instance.Keyboard();
             textField.text = inputField.text;
         }
 
@@ -96,7 +106,11 @@ namespace Game.Console
 
         private void Submit()
         {
-            SFX.Instance.PlayOneShot(SFX.Instance.SubmitSound);
+			if (GameManager.Instance.IsConsoleBlocked)
+			{
+				return;
+			}
+			SFX.Instance.PlayOneShot(SFX.Instance.SubmitSound);
             CreateNewLogEntry();
             OnNewSubmission?.Invoke();
         }
@@ -111,7 +125,7 @@ namespace Game.Console
 
         public void Log(string text)
         {
-            LogEntry autoLogEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
+			LogEntry autoLogEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
             autoLogEntry.SetTextGameBoy(text);
             autoLogEntry.SetDirectoryText("");
             logEntry.transform.SetAsLastSibling();
@@ -119,7 +133,7 @@ namespace Game.Console
 
         public void LogImage(string text)
         {
-            LogEntry autoLogEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
+			LogEntry autoLogEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
             autoLogEntry.SetFastTextGameBoy(text);
             autoLogEntry.SetDirectoryText("");
             logEntry.transform.SetAsLastSibling();

@@ -40,6 +40,7 @@ namespace Game.Console.Commands
 [external] -> show external files
 [local] -> show local files
 [quit] -> close app
+[credits -> show credits]
 [easy, medium, hard]
 ";
 			GameConsole.instance.Log(helpText);
@@ -55,6 +56,29 @@ namespace Game.Console.Commands
 		{
 			GameConsole.instance.Log("SYSTEM COMPLEXITY set to "+(Difficulty)newValue + " on next startup.");
 			GameManager.Instance.difficulty = (Difficulty)newValue;
+		}
+
+		public void ShowCredits()
+		{
+			GameConsole.instance.Log("game crated at ggj20");
+		}
+
+		public void ShowGitStatus()
+		{
+			GameConsole.instance.Log(@"
+# On branch metasys-dev
+# Your branch and 'origin/metasys-dev' have diverged,
+# You have unmerged paths.
+#  (fix conflicts and run git commit)
+
+Conflicts detected in 2739 files:
+
+		both modified: config.json
+		both modifies: MainScene.unity
+		both modified: ProjectSettings.asset
+		failed to load: ...
+");
+
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Game.Tasks.Abstract;
+﻿using Game.Console;
+using Game.Tasks.Abstract;
 using Game.Utils;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ Remote console connectivity overload. Please refocus console.
 		public override void WinTask()
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
-
+			GameConsole.instance.inputField.text = string.Empty;
 			GameManager.Instance.LogToConsole("Focus regained.");
 			GameManager.Instance.FinishCurrentTask();
 		}

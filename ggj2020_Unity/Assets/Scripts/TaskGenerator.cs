@@ -17,22 +17,19 @@ namespace Game
 
 		public GameTask CreateRandomTask()
 		{
-			//update number depending on possible types
-			var randomValue = _random.Next(3);
+			var randomValue = _random.Next(100);
 
-			switch (randomValue)
+			if (randomValue < 50)
 			{
-				case 0:
-					return CreateRandomConsoleTask();
-
-				case 1:
-					return CreateRandomFileTask();
-
-				case 2:
-					return CreateRandomNeedyTask();
-
-				default:
-					return CreateRandomConsoleTask();
+				return CreateRandomConsoleTask();
+			}
+			else if (randomValue >= 50 && randomValue < 90)
+			{
+				return CreateRandomFileTask();
+			}
+			else
+			{
+				return CreateRandomNeedyTask();
 			}
 		}
 
