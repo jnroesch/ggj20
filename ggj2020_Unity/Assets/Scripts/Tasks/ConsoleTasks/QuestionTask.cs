@@ -21,7 +21,7 @@ namespace Game.Tasks.ConsoleTasks
 			options.Add(new Dictionary<string, string>()
 			{
 				{"question", @"
-Virus requests permission to be executed?
+Virus requests permission to be executed.
 
 	EXECUTE?
 
@@ -52,13 +52,13 @@ Virus requests permission to be executed?
 			var lastInput = GameManager.Instance.GetLastConsoleInput();
 			if(string.Equals(lastInput, option["keyAccept"], System.StringComparison.OrdinalIgnoreCase))
 			{
-				GameConsole.instance.Log("Virus executed!");
+				GameConsole.instance.Log("Virus has spread. Please remember that your actions have consequences.");
 				GameManager.Instance.ExecuteVirusAction();
 				return true;
 			}
 			else if(string.Equals(lastInput, option["keyDecline"], System.StringComparison.OrdinalIgnoreCase))
 			{
-				GameConsole.instance.Log("Virus did not execute!");
+				GameConsole.instance.Log("Permission denied.");
 				return true;
 			}
 			else
@@ -79,7 +79,6 @@ Virus requests permission to be executed?
 		public override void WinTask()
 		{
 			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
-			GameManager.Instance.LogToConsole("well done");
 			GameManager.Instance.FinishCurrentTask();
 		}
 

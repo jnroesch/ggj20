@@ -73,14 +73,10 @@ namespace Game
 WELCOME ENGINEER. Your productivity is appreciated.
 
 
-Your energy budget for today is 755981 kWh
-== 20 SECONDS SYSTEMTIME. 
-
-Recommended Commands: [help]
-
+Your energy budget for today is 755981 kWh == 20 SECONDS SYSTEMTIME.
+Recommended commands: [help]
 
 	PRESS <RETURN> TO START REPAIR SYSTEM.
-
 
 ");
 
@@ -145,12 +141,18 @@ Recommended Commands: [help]
 				SFX.Instance.StopBackgroundMusic();
 				console.Log(@"
 
-
 Filesystem chunk 25/1205183 has been restored.
 Your termination will be reconsidered.
 
+        _  _ ___ ________   ____   
+  _ _ _| || |__ \____  \ \ / /\ \  
+ (_|_|_) || |_ ) |  / /_\ V /_ \ \ 
+       |__   _/ /  / /|___ ___| > >
+  _ _ _   | |/ /_ / / |___ ___|/ / 
+ (_|_|_)  |_|____/_/     |_|  /_/  
+");
+				console.Log(@"
 	PRESS <RETURN> to continue your METASYS employment.
-
 ");
 				timer.StopTimer();
 				_currentTask = null;
@@ -173,8 +175,14 @@ Your termination will be reconsidered.
 			gameHasEnded = true;
 			console.Log(@"
 METASYS ARK chunksystem integrity is in CRITICAL CONDITION.
-
 Your productivity score has been noted. Goodbye.
+
+███╗   ███╗███████╗████████╗ █████╗ ███████╗██   ██╗███████╗
+████████╗   ██║  ╗ ████║██╔════╝╚══██╔══╝██╔══██╗██╔════╝╚██╗ ██╔╝██╔═══
+██╔████╔██║█████║███████╗ ╚████╔╝ ███████╗
+  ╚██╔╝██║██╔══╝     ██║   ██╔══██║╚════██║  ╚██╔╝  ╚════██║
+██║ ╚═╝ ██║██████╗   ██║  █████╗   ██║   ██║  ██║███████║   ██║   ███████║
+╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝████╗   ██║    ╚═╝╚══════╝   ╚═╝   ╚══════╝████╗   ██║  
 ");
 			console.Log(@"
 	PRESS <RETURN> to continue your METASYS employment.
