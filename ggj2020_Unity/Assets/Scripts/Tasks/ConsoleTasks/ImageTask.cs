@@ -15,7 +15,6 @@ namespace Game.Tasks.ConsoleTasks
 
 		public ImageTask()
 		{
-			GameConsole.instance.OnNewSubmission += OnConsoleInput;
 			options = new List<Dictionary<string, string>>();
 
 			#region options
@@ -52,6 +51,71 @@ namespace Game.Tasks.ConsoleTasks
                            @@@@                                    @@@          
                           @@@                                  @@@@@@           "}
 			});
+
+			options.Add(new Dictionary<string, string>()
+			{
+				{"word", "fish" },
+				{"start", "Automatic Error Recognition System broken, please IDENTIFY ANIMAL to recalibrate" },
+				{"win", "here, have a fishy stick" },
+				{"fail", "calibration failed" },
+				{"image", @"
+                                                                                
+                                                                                
+                                                                                
+       .....,..                        .*#(%%%%%(                               
+          ..,..#%(#(%                .# /#%#%%&%%##%%                           
+          . .,..(#%%%#%%          (/(##%%&%&%%(/#(&#%&%*%%#&&&(,                
+           ./((#.*%%%%#&(#%    ###%/%%%##%%/##/#/#/(%///(/*,#//./%&%            
+             ***(#%%%%%%&%&(%%#%%%(/#(#(/##/#(/((* ,*(*/../*/(,#/&%%&&(%#       
+               (#(((%%%#%%(*,/,/(*/*/,(#//*//,*,. /#*#%*#**,*,*%%/.,%%#&%@&&&   
+                  ######(%%((/*///////,*(/(*(*((,*/*(.((*///,//#%/**#%///%%&/   
+          ......,##%%%#%%%&#(/((/(**/((*/,(/*(,/(,(**(./*#((,*,((#((%#(%/(      
+          ,,,/(%%%%%#%##,       #%%((*/(/((#,//,*/(//,(,(//*,,#%&((#(/.         
+     ....*,*(###%#/         (#(%%%%%&##(((#((//(//(*#/#**#%&%%#(#(/             
+     ,,,**(/              *                   #%%%%&&%%%%%((  %&                
+                                           *#%%%%%%&&         ##                
+                                          ###(((##%          #(*                
+                                            .../                                
+                                                                                
+                                                                                "}
+			});
+
+			options.Add(new Dictionary<string, string>()
+			{
+				{"word", "butterfly" },
+				{"start", "Automatic Error Recognition System broken, please IDENTIFY ANIMAL to recalibrate" },
+				{"win", "great job, calibration succeeded" },
+				{"fail", "calibration failed" },
+				{"image", @"
+                                                                                
+                                                                                
+                                                                                
+                            &%                      /@                          
+                            @                        /                          
+     ****************(       @                      @         &************.    
+   @***@  ****************     @                   @    %*********************  
+    ****&********@    @******    @              @    ******************&  @***  
+     #**********            @**/   &          @   @***            ***********   
+       ***********   ((((((@   %**   @      *   **&   *((((((    ********@      
+     ****/****           ((((((   *@      *   %*   ((((((%         *********    
+     *********   @%%%%%%%%#   %((@  *  (     *  (((@   @%%%%%%%%@   ***  ***@   
+       *********&        *#%%%%@  (% * (/(  @ (&  #%%%%%#         @********%    
+         *******   /////////#    @%   *( . @@  %@       &#//(/   /******        
+        ***% ***     @////////%@#.    @* **   .@%////////////&    *******       
+         ***********%&(/%&&**&((((((@(** **(((((((@*@.         /*********       
+              % ********/(((((.  @@(**** ****( (  /(((((@************@          
+              *******(((((    ( ((/***&  @ ***@( ,(.  @(((((******@             
+             /*****((((    ,( .((****   &   ****(( .(.   /((((*****             
+             ******(((   (((((((****         ****@((((((   (((******            
+              *****(((((((*@%******           ******((@((((((#*****@            
+              ********************,           @********************             
+               ******************               ******************              
+               ***********                            ************              
+      *.      **#                                               **&             
+        @***&                                                      **&@***      
+                                                                                
+"}
+			});
 			#endregion
 
 			var random = new System.Random();
@@ -77,6 +141,7 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void StartTask()
 		{
+			GameConsole.instance.OnNewSubmission += OnConsoleInput;
 			GameConsole.instance.Log(option["image"]);
 			GameConsole.instance.Log(option["start"]);
 		}
@@ -84,6 +149,7 @@ namespace Game.Tasks.ConsoleTasks
 		public override void WinTask()
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
+			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
 			GameConsole.instance.Log(option["win"]);
 			GameManager.Instance.FinishCurrentTask();
 		}

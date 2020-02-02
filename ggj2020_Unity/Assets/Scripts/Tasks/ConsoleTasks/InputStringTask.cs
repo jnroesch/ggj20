@@ -13,7 +13,7 @@ namespace Game.Tasks.ConsoleTasks
 
 		public InputStringTask()
 		{
-			GameConsole.instance.OnNewSubmission += OnConsoleInput;
+			
 		}
 
 		~InputStringTask()
@@ -34,12 +34,14 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void StartTask()
 		{
+			GameConsole.instance.OnNewSubmission += OnConsoleInput;
 			GameManager.Instance.LogToConsole("Please type in the following command: " + _textToInput);
 		}
 
 		public override void WinTask()
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
+			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
 			GameManager.Instance.LogToConsole("well done");
 			GameManager.Instance.FinishCurrentTask();
 		}
