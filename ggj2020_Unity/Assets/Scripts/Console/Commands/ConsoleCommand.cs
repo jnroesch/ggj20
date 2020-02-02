@@ -39,6 +39,7 @@ namespace Game.Console.Commands
 			string helpText =@"
 [external] -> show external files
 [local] -> show local files
+[sysinfo] -> show system information
 [quit] -> close app
 [credits] -> show credits
 [easy, medium, hard] -> difficulty
