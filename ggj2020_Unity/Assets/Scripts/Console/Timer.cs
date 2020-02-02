@@ -34,10 +34,26 @@ namespace Game.Console
         {
             while (timeLeft > 0)
             {
-                if (timeLeft == 20) console.Log("Your debugging budget for today is: " + timeLeft.ToString() + " SECONDS. STARTING NOW.");
-                if (timeLeft == 15) console.Log(timeLeft.ToString() + " SECONDS LEFT. Please remain productive.");
-                if (timeLeft == 10) console.Log(timeLeft.ToString() + " SECONDS. Eliminate all distractions.");
-                if (timeLeft <= 5) console.Log(timeLeft.ToString() + " SECONDS. Concentrate.");
+                if (timeLeft == 20)
+                {
+                    console.Log("Your debugging budget for today is: " + timeLeft.ToString() + " SECONDS. STARTING NOW.");
+                    SFX.Instance.PlayOneShot(SFX.Instance.TimerBeep);
+                }
+                if (timeLeft == 15)
+                {
+                    console.Log(timeLeft.ToString() + " SECONDS LEFT. Please remain productive.");
+                    SFX.Instance.PlayOneShot(SFX.Instance.TimerBeep);
+                }
+                if (timeLeft == 10)
+                {
+                    console.Log(timeLeft.ToString() + " SECONDS. Eliminate all distractions.");
+                    SFX.Instance.PlayOneShot(SFX.Instance.TimerBeep);
+                }
+                if (timeLeft <= 5)
+                {
+                    console.Log(timeLeft.ToString() + " SECONDS. Concentrate.");
+                    SFX.Instance.PlayOneShot(SFX.Instance.TimerBeep);
+                }
 
                 int step = timeLeft > 5 ? 5 : 1;
                 yield return new WaitForSeconds(step);

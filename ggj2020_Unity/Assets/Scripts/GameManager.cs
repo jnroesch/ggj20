@@ -102,6 +102,7 @@ namespace Game
 		/// </summary>
 		public void StartGame()
 		{
+			SFX.Instance.StartBackgroundMusic();
 			GenerateGameTasks((int)difficulty + 1);
 			gameHasEnded = false;
 			timer.StartTimer();
@@ -118,6 +119,7 @@ namespace Game
 		{
 			if(_gameTasks.Count == 0)
 			{
+				SFX.Instance.StopBackgroundMusic();
 				console.Log("A WINNER IS YOU");
 				console.Log("press return to try again");
 				timer.StopTimer();
@@ -135,6 +137,7 @@ namespace Game
 		/// </summary>
 		public void GameOver()
 		{
+			SFX.Instance.StopBackgroundMusic();
 			gameHasEnded = true;
 			console.Log("METASYS ARK is in CRITICAL CONDITION. Your productivity score has been noted. Goodbye.");
 			console.Log("PRESS RETURN to continue your METASYS employment.");
