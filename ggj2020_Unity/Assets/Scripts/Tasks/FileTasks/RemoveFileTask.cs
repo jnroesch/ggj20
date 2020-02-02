@@ -24,7 +24,7 @@ namespace Game.Tasks.FileTasks
 
 		public override void StartTask()
 		{
-			File.Create(Path.Combine(Application.persistentDataPath, _fileName));
+			File.Create(Path.Combine(Application.persistentDataPath, _fileName)).Dispose();
 
 			GameManager.Instance.LogToConsole("The virus created a malicious file: " + _fileName);
 		}
