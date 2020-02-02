@@ -22,7 +22,7 @@ namespace Game.Tasks.ConsoleTasks
 			{
 				{"word", "dog" },
 				{"start", @"
-Automatic Image Recognition System a larger dataset. Manual Identification required.
+Automatic Image Recognition System needs a larger dataset. Manual identification required.
 
 	IDENTIFY.
 
@@ -52,7 +52,7 @@ Automatic Image Recognition System a larger dataset. Manual Identification requi
 			{
 				{"word", "fish" },
 				{"start", @"
-Automatic Image Recognition System a larger dataset. Manual Identification required.
+Automatic Image Recognition System needs a larger dataset. Manual identification required.
 
 	IDENTIFY.
 
@@ -76,7 +76,7 @@ Automatic Image Recognition System a larger dataset. Manual Identification requi
 			{
 				{"word", "butterfly" },
 				{"start", @"
-Automatic Image Recognition System a larger dataset. Manual Identification required.
+Automatic Image Recognition System needs a larger dataset. Manual identification required.
 
 	IDENTIFY.
 
