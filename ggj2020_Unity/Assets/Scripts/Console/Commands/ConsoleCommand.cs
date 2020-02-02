@@ -68,7 +68,19 @@ EMPLOYEE RECORD
 483¥	Ludwig Seibt ludwigseibt.com
 
 SYSTEM ORIGIN
-Global Game Jam 2020");
+Global Game Jam 2020
+");
+		}
+
+		public void ShowSysInfo()
+		{
+			GameConsole.instance.Log(@"
+There are currently 8295004 METASYS employees connected.
+This filesystem consists of 1205183 chunks.
+Corruption: 97%.
+
+METASYS ENGINEERING. Your productivity is appreciated.
+");
 		}
 
 		public void ShowGitStatus()
