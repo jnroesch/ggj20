@@ -9,11 +9,25 @@ namespace Game.Tasks.ConsoleTasks
 {
 	public class InputStringTask : ConsoleTask
 	{
-		private string _textToInput = "passwrod";
+		private List<string> options;
+
+		private string _textToInput;
 
 		public InputStringTask()
 		{
-			
+			options = new List<string>()
+			{
+				"passwrod",
+				"gamejam",
+				"ggj20",
+				"metasys",
+				"rm -rf",
+				"drop table"
+			};
+
+			var random = new System.Random();
+			int randomInt = random.Next(options.Count);
+			_textToInput = options[randomInt];
 		}
 
 		~InputStringTask()
@@ -35,7 +49,7 @@ namespace Game.Tasks.ConsoleTasks
 		public override void StartTask()
 		{
 			GameConsole.instance.OnNewSubmission += OnConsoleInput;
-			GameManager.Instance.LogToConsole("Please type in the following command: " + _textToInput);
+			GameManager.Instance.LogToConsole($"Please type in the following command: [{_textToInput}]");
 		}
 
 		public override void WinTask()

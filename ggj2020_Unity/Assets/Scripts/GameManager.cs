@@ -45,7 +45,7 @@ namespace Game
 			gameHasEnded = true;
 
 			Screen.fullScreenMode = FullScreenMode.Windowed;
-			Screen.SetResolution(640, 400, false);
+			Screen.SetResolution(800, 500, false);
 		}
 
 		private void OnEnable()
