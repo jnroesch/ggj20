@@ -39,6 +39,11 @@ namespace Game.Console
             StartCoroutine(GameBoyText(text));
         }
 
+        public void SetFastTextGameBoy(string text)
+        {
+            StartCoroutine(FastGameBoyText(text));
+        }
+
         private IEnumerator GameBoyText(string text)
         {
             yield return new WaitForSeconds(delay);
@@ -46,8 +51,20 @@ namespace Game.Console
             for (int i = 0; i < text.Length; i++)
             {
                 LogEntryText.text += text[i];
-                SFX.Instance.PlayOneShot(SFX.Instance.GameboyText);
+                SFX.Instance.PlayOneShot(SFX.Instance.GameboyText, .2f);
                 yield return new WaitForSeconds(delay);
+            }
+        }
+
+        private IEnumerator FastGameBoyText(string text)
+        {
+            yield return new WaitForEndOfFrame();
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                LogEntryText.text += text[i];
+                SFX.Instance.PlayOneShot(SFX.Instance.GameboyText, .2f);
+                yield return new WaitForEndOfFrame();
             }
         }
     }

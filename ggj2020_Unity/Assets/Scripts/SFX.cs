@@ -52,6 +52,11 @@ public class SFX : MonoBehaviour
         audioSource.PlayOneShot(audioClip);
     }
 
+    public void PlayOneShot(AudioClip audioClip, float volumescale)
+    {
+        audioSource.PlayOneShot(audioClip, volumescale);
+    }
+
     public AudioClip GetRandomWinBeep()
     {
         System.Random rnd = new System.Random();

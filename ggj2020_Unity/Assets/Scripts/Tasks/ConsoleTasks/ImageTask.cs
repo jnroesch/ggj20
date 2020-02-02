@@ -142,7 +142,7 @@ namespace Game.Tasks.ConsoleTasks
 		public override void StartTask()
 		{
 			GameConsole.instance.OnNewSubmission += OnConsoleInput;
-			GameConsole.instance.Log(option["image"]);
+			GameConsole.instance.LogImage(option["image"]);
 			GameConsole.instance.Log(option["start"]);
 		}
 

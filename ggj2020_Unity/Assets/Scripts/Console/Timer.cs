@@ -36,7 +36,7 @@ namespace Game.Console
             {
                 if (timeLeft == 20)
                 {
-                    console.Log("Your debugging budget for today is: " + timeLeft.ToString() + " SECONDS. STARTING NOW.");
+                    console.Log(timeLeft.ToString() + " SECONDS. STARTING NOW.");
                     SFX.Instance.PlayOneShot(SFX.Instance.TimerBeep);
                 }
                 if (timeLeft == 15)

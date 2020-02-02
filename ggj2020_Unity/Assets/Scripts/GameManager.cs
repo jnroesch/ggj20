@@ -60,7 +60,23 @@ namespace Game
 
 		void Start()
 		{
-			console.Log("hello player, press return to start, type help for more info");
+			console.Log(@"
+███╗   ███╗███████╗████████╗ █████╗ ███████╗██╗   ██╗███████╗
+████╗ ████║██╔════╝╚══██╔══╝██╔══██╗██╔════╝╚██╗ ██╔╝██╔════╝
+██╔████╔██║█████╗     ██║   ███████║███████╗ ╚████╔╝ ███████╗
+██║╚██╔╝██║██╔══╝     ██║   ██╔══██║╚════██║  ╚██╔╝  ╚════██║
+██║ ╚═╝ ██║███████╗   ██║   ██║  ██║███████║   ██║   ███████║
+╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝
+WELCOME ENGINEER. Your productivity is appreciated.
+
+
+	Your energy budget for today is 755981 kWh
+	== 20 SECONDS SYSTEMTIME. 
+
+	RECOMMENDED COMMANDS: [help]
+
+	PRESS <RETURN> TO START REPAIR SYSTEM.
+");
 
 			difficulty = Difficulty.Medium;	
 		}

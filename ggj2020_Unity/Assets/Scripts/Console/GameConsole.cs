@@ -117,6 +117,14 @@ namespace Game.Console
             logEntry.transform.SetAsLastSibling();
         }
 
+        public void LogImage(string text)
+        {
+            LogEntry autoLogEntry = Instantiate(logEntryPrefab, logEntryParent).GetComponent<LogEntry>();
+            autoLogEntry.SetFastTextGameBoy(text);
+            autoLogEntry.SetDirectoryText("");
+            logEntry.transform.SetAsLastSibling();
+        }
+
         public string GetLastLogEntryString()
         {
             if (logEntries.Count == 0)
