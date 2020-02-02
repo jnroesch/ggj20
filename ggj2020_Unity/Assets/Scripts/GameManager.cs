@@ -141,9 +141,9 @@ Recommended commands: [help]
 			if(_gameTasks.Count == 0)
 			{
 				SFX.Instance.StopBackgroundMusic();
-				console.Log(@"
+				console.Log(@$"
 
-Filesystem chunk 25/1205183 has been restored.
+Filesystem chunk {Mathf.RoundToInt(Random.Range(10, 500))}/1205183 has been restored.
 Your termination will be reconsidered.
 
         _  _ ___ ________   ____   
