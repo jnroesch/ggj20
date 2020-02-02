@@ -21,9 +21,14 @@ namespace Game.Tasks.ConsoleTasks
 			options.Add(new Dictionary<string, string>()
 			{
 				{"word", "dog" },
-				{"start", "Automatic Error Recognition System broken, please IDENTIFY ANIMAL to recalibrate" },
-				{"win", "who's a good boy?" },
-				{"fail", "calibration failed" },
+				{"start", @"
+Automatic Image Recognition System a larger dataset. Manual Identification required.
+
+	IDENTIFY.
+
+" },
+				{"win", "Machine has learned." },
+				{"fail", "Disagreement." },
 				{"image", @"
          @@                                       
        @@@@@@                                     
@@ -46,9 +51,14 @@ namespace Game.Tasks.ConsoleTasks
 			options.Add(new Dictionary<string, string>()
 			{
 				{"word", "fish" },
-				{"start", "Automatic Error Recognition System broken, please IDENTIFY ANIMAL to recalibrate" },
-				{"win", "here, have a fishy stick" },
-				{"fail", "calibration failed" },
+				{"start", @"
+Automatic Image Recognition System a larger dataset. Manual Identification required.
+
+	IDENTIFY.
+
+" },
+				{"win", "Machine has learned." },
+				{"fail", "Disagreement." },
 				{"image", @"
    ....,,               ,.%#%%%#                  
    ... ./%%*#        ,(#%%&%&%%%(*(%%%%%          
@@ -65,9 +75,14 @@ namespace Game.Tasks.ConsoleTasks
 			options.Add(new Dictionary<string, string>()
 			{
 				{"word", "butterfly" },
-				{"start", "Automatic Error Recognition System broken, please IDENTIFY ANIMAL to recalibrate" },
-				{"win", "great job, calibration succeeded" },
-				{"fail", "calibration failed" },
+				{"start", @"
+Automatic Image Recognition System a larger dataset. Manual Identification required.
+
+	IDENTIFY.
+
+" },
+				{"win", "Machine has learned." },
+				{"fail", "Disagreement." },
 				{"image", @"
                  /@             %/                
     *****#       @               &                
