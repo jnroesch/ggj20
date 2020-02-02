@@ -8,6 +8,7 @@ using Game.Console;
 using Game.Virus;
 using Game.Tasks.FileTasks;
 using Game.Tasks.ConsoleTasks;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -36,6 +37,8 @@ namespace Game
 		public bool IsInFocus;
 
 		private bool gameHasEnded;
+
+		private bool playedFirstRound;
 
 		private void Awake()
 		{
@@ -126,6 +129,7 @@ Recommended Commands: [help]
 			gameHasEnded = false;
 			timer.StartTimer();
 			StartNewTask();
+			playedFirstRound = true;
 		}
 
 		private void StartNewTask()
@@ -219,7 +223,14 @@ Your productivity score has been noted. Goodbye.
 			{
 				if (Input.GetKeyDown(KeyCode.Return))
 				{
-					StartGame();
+					if (playedFirstRound)
+					{
+						SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+					}
+					else
+					{
+						StartGame();
+					}
 				}
 				return;
 			}
