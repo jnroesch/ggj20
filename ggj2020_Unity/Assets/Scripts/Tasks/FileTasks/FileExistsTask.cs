@@ -12,9 +12,11 @@ namespace Game.Tasks.FileTasks
 	{
 		private List<string> options = new List<string>()
 	{
-		"hallo.txt",
-		"test.png",
-		"stuff.pdf"
+		"sysconfig.txt",
+		"manual.pdf",
+		"report.txt",
+		"system.txt",
+		"users.txt",
 	};
 
 		private string _fileName;
@@ -35,6 +37,14 @@ namespace Game.Tasks.FileTasks
 			var random = new System.Random();
 			int index = random.Next(options.Count);
 			_fileName = options[index];
+
+			var path = Path.Combine(Application.dataPath, _fileName);
+
+			//if file already exists, remove it so task does not get auto completed
+			if (File.Exists(path))
+			{
+				File.Delete(path);
+			}
 
 			GameManager.Instance.LogToConsole(@"
 One file is missing in [external]: " + _fileName + @"

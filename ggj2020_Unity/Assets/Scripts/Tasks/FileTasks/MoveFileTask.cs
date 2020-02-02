@@ -13,8 +13,12 @@ namespace Game.Tasks.FileTasks
 
 		public MoveFileTask()
 		{
-			var files = Directory.GetFiles(Application.persistentDataPath);
-			if (files.Length == 0)
+			var files = Directory.GetFiles(Application.persistentDataPath).Select(file => file.Split(new char[] { '/', '\\' }).Last()).ToList();
+
+			files.Remove("Player.log");
+			files.Remove("Player-prev.log");
+
+			if (files.Count == 0)
 			{
 				_fileName = "important.xml";
 				File.Create(Path.Combine(Application.persistentDataPath, _fileName));
@@ -22,7 +26,7 @@ namespace Game.Tasks.FileTasks
 			else
 			{
 				var random = new System.Random();
-				var index = random.Next(files.Length);
+				var index = random.Next(files.Count);
 				_fileName = files[index].Split(new char[] { '/', '\\' }).Last();
 			}
 		}

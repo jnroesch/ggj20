@@ -26,6 +26,7 @@ namespace Game.Tasks.FileTasks
 		{
 			File.Create(Path.Combine(Application.dataPath, _fileName));
 
+
 			GameManager.Instance.LogToConsole(@"
 A virus created a malicious file in [local] files: " + _fileName + @" please remove it.
 
