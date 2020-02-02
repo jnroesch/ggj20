@@ -212,9 +212,7 @@ WELCOME ENGINEER. Your productivity is appreciated.
 				return;
 			}
 
-			var virusCreator = new VirusGenerator();
-			var virus = virusCreator.CreateRandomVirusAction();
-			virus.Execute();
+			ExecuteVirusAction();
 		}
 
 		private void GenerateGameTasks(int amountOfTasksToCreate)
