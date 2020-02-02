@@ -40,6 +40,7 @@ namespace Game.Console.Commands
 [external] -> show external files
 [local] -> show local files
 [quit] -> close app
+[credits -> show credits]
 [easy, medium, hard]
 ";
 			GameConsole.instance.Log(helpText);
@@ -66,7 +67,7 @@ namespace Game.Console.Commands
 		{
 			GameConsole.instance.Log(@"
 # On branch metasys-dev
-# # Your branch and 'origin/metasys-dev' have diverged,
+# Your branch and 'origin/metasys-dev' have diverged,
 # You have unmerged paths.
 #  (fix conflicts and run git commit)
 
