@@ -38,7 +38,7 @@ namespace Game.Tasks.FileTasks
 			int index = random.Next(options.Count);
 			_fileName = options[index];
 
-			var path = Path.Combine(Application.dataPath, _fileName);
+			var path = Path.Combine(Application.persistentDataPath, _fileName);
 
 			//if file already exists, remove it so task does not get auto completed
 			if (File.Exists(path))

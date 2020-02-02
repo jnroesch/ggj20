@@ -11,7 +11,20 @@ namespace Game.Tasks.FileTasks
 	{
 		private string _fileName;
 
-		public MoveFileTask()
+		public override void FailTask()
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public override bool IsCompleted()
+		{
+			var oldPath = Path.Combine(Application.persistentDataPath, _fileName);
+			var newPath = Path.Combine(Application.dataPath, _fileName);
+
+			return File.Exists(newPath) && !File.Exists(oldPath);
+		}
+
+		public override void StartTask()
 		{
 			var files = Directory.GetFiles(Application.persistentDataPath).Select(file => file.Split(new char[] { '/', '\\' }).Last()).ToList();
 
@@ -29,23 +42,7 @@ namespace Game.Tasks.FileTasks
 				var index = random.Next(files.Count);
 				_fileName = files[index].Split(new char[] { '/', '\\' }).Last();
 			}
-		}
 
-		public override void FailTask()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public override bool IsCompleted()
-		{
-			var oldPath = Path.Combine(Application.persistentDataPath, _fileName);
-			var newPath = Path.Combine(Application.dataPath, _fileName);
-
-			return File.Exists(newPath) && !File.Exists(oldPath);
-		}
-
-		public override void StartTask()
-		{
 			GameManager.Instance.LogToConsole($@"
 File has been placed in wrong directory. Please move file from [external] to [local]: {_fileName}
 
