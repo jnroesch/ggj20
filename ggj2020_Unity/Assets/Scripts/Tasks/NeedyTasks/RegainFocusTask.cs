@@ -12,7 +12,7 @@ namespace Game.Tasks.NeedyTasks
 
 		public override void FailTask()
 		{
-			GameManager.Instance.LogToConsole("failed task");
+			GameManager.Instance.LogToConsole("Failure.");
 		}
 
 		public override bool IsCompleted()
@@ -26,14 +26,21 @@ namespace Game.Tasks.NeedyTasks
 
 		public override void StartTask()
 		{
-			GameManager.Instance.LogToConsole("Please regain focus in console");
+			GameManager.Instance.LogToConsole(@"
+Your productivity is decreasing. Please refocus.
+
+
+	REFOCUS CONSOLE.
+
+
+");
 		}
 
 		public override void WinTask()
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
 
-			GameManager.Instance.LogToConsole("needy task completed");
+			GameManager.Instance.LogToConsole("Focus regained.");
 			GameManager.Instance.FinishCurrentTask();
 		}
 	}

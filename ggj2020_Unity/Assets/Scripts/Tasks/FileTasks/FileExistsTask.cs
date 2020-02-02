@@ -36,14 +36,21 @@ namespace Game.Tasks.FileTasks
 			int index = random.Next(options.Count);
 			_fileName = options[index];
 
-			GameManager.Instance.LogToConsole("One file is missing in filesystem: " + _fileName);
+			GameManager.Instance.LogToConsole(@"
+One file is missing in [external]: " + _fileName + @"
+
+
+	CREATE FILE.
+
+
+");
 		}
 
 		public override void WinTask()
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
 
-			GameManager.Instance.LogToConsole("File has been restored - Good Job!");
+			GameManager.Instance.LogToConsole("File has been restored.");
 			GameManager.Instance.FinishCurrentTask();
 		}
 	}

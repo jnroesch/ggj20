@@ -38,7 +38,9 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void FailTask()
 		{
-			GameManager.Instance.LogToConsole("WRONG!");
+			GameManager.Instance.LogToConsole(@"
+Difference to correct answer > 0.
+");
 		}
 
 		public override bool IsCompleted()
@@ -66,7 +68,14 @@ namespace Game.Tasks.ConsoleTasks
 		{
 			GameConsole.instance.OnNewSubmission += OnConsoleInput;
 			string symbol = _operation == Operation.Addition ? "+" : "-";
-			GameConsole.instance.Log($"Time for some math: What is {_number1} {symbol} {_number2}");
+			GameConsole.instance.Log(@"
+Orbit recalculation required. What is: " + $"{_number1} {symbol} {_number2}" + @"
+
+
+	CALCULATE.
+
+
+");
 		}
 
 		public override void WinTask()
@@ -74,7 +83,7 @@ namespace Game.Tasks.ConsoleTasks
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
 
 			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
-			GameManager.Instance.LogToConsole("well done");
+			GameManager.Instance.LogToConsole("Calculation complete.");
 			GameManager.Instance.FinishCurrentTask();
 		}
 

@@ -70,12 +70,15 @@ namespace Game
 WELCOME ENGINEER. Your productivity is appreciated.
 
 
-	Your energy budget for today is 755981 kWh
-	== 20 SECONDS SYSTEMTIME. 
+Your energy budget for today is 755981 kWh
+== 20 SECONDS SYSTEMTIME. 
 
-	RECOMMENDED COMMANDS: [help]
+Recommended Commands: [help]
+
 
 	PRESS <RETURN> TO START REPAIR SYSTEM.
+
+
 ");
 
 			difficulty = Difficulty.Medium;	
@@ -136,14 +139,23 @@ WELCOME ENGINEER. Your productivity is appreciated.
 			if(_gameTasks.Count == 0)
 			{
 				SFX.Instance.StopBackgroundMusic();
-				console.Log("A WINNER IS YOU");
-				console.Log("press return to try again");
+				console.Log(@"
+
+
+Filesystem chunk 25/1205183 has been restored.
+Your termination will be reconsidered.
+
+	PRESS <RETURN> to continue your METASYS employment.
+
+");
 				timer.StopTimer();
 				_currentTask = null;
 				return;
 			}
 
-			console.Log("... but wait, there is more");
+			console.Log(@"
+	NEXT task awaits.
+");
 
 			StartNewTask();
 		}
@@ -155,8 +167,13 @@ WELCOME ENGINEER. Your productivity is appreciated.
 		{
 			SFX.Instance.StopBackgroundMusic();
 			gameHasEnded = true;
-			console.Log("METASYS ARK is in CRITICAL CONDITION. Your productivity score has been noted. Goodbye.");
-			console.Log("PRESS RETURN to continue your METASYS employment.");
+			console.Log(@"
+METASYS ARK is in CRITICAL CONDITION.
+Your productivity score has been noted. Goodbye.
+");
+			console.Log(@"
+	PRESS RETURN to continue your METASYS employment.
+");
 			_currentTask = null;
 			_gameTasks.Clear();
 			timer.StopTimer();

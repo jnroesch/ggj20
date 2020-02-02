@@ -42,14 +42,21 @@ namespace Game.Tasks.FileTasks
 
 		public override void StartTask()
 		{
-			GameManager.Instance.LogToConsole($"File has been placed in wrong directory<br>Conflicitng file is {_fileName}");
+			GameManager.Instance.LogToConsole($@"
+File has been placed in wrong directory. Please move file from [external] to [local]: {_fileName}
+
+
+	MOVE FILE.
+
+
+");
 		}
 
 		public override void WinTask()
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
 
-			GameManager.Instance.LogToConsole("files have been correctly moved");
+			GameManager.Instance.LogToConsole("Integrity restored.");
 			GameManager.Instance.FinishCurrentTask();
 		}
 	}

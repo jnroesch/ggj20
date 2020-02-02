@@ -18,22 +18,29 @@ namespace Game.Tasks.FileTasks
 
 		public override bool IsCompleted()
 		{
-			var path = Path.Combine(Application.persistentDataPath, _fileName);
+			var path = Path.Combine(Application.dataPath, _fileName);
 			return !File.Exists(path);
 		}
 
 		public override void StartTask()
 		{
-			File.Create(Path.Combine(Application.persistentDataPath, _fileName));
+			File.Create(Path.Combine(Application.dataPath, _fileName));
 
-			GameManager.Instance.LogToConsole("The virus created a malicious file: " + _fileName);
+			GameManager.Instance.LogToConsole(@"
+A virus created a malicious file in [local] files: " + _fileName + @" please remove it.
+
+
+	REMOVE FILE.
+
+
+");
 		}
 
 		public override void WinTask()
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
 
-			GameManager.Instance.LogToConsole("well done");
+			GameManager.Instance.LogToConsole("Quarantined.");
 			GameManager.Instance.FinishCurrentTask();
 		}
 	}

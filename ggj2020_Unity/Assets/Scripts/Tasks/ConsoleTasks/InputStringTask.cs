@@ -23,7 +23,8 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void FailTask()
 		{
-			GameManager.Instance.LogToConsole("That was the wrong command you idiot");
+			GameManager.Instance.LogToConsole(@"
+Incorrect.");
 		}
 
 		public override bool IsCompleted()
@@ -35,14 +36,23 @@ namespace Game.Tasks.ConsoleTasks
 		public override void StartTask()
 		{
 			GameConsole.instance.OnNewSubmission += OnConsoleInput;
-			GameManager.Instance.LogToConsole("Please type in the following command: " + _textToInput);
-		}
+			GameManager.Instance.LogToConsole(@"
+Database corrupted... Please spell recovery command: " + _textToInput + @"
 
+
+	TYPE COMMAND.
+
+
+");
+		}
+		
 		public override void WinTask()
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
 			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
-			GameManager.Instance.LogToConsole("well done");
+			GameManager.Instance.LogToConsole(@"
+Command accepted.
+");
 			GameManager.Instance.FinishCurrentTask();
 		}
 

@@ -37,7 +37,7 @@ namespace Game.Console.Commands
 		public void Help()
 		{
 			string helpText =@"
-[files] -> show external files
+[external] -> show external files
 [local] -> show local files
 [quit] -> close app
 [easy, medium, hard]
@@ -53,7 +53,7 @@ namespace Game.Console.Commands
 
 		public void ChangeDifficulty(int newValue)
 		{
-			GameConsole.instance.Log("Changed difficulty to "+(Difficulty)newValue + " for next round");
+			GameConsole.instance.Log("SYSTEM COMPLEXITY set to "+(Difficulty)newValue + " on next startup.");
 			GameManager.Instance.difficulty = (Difficulty)newValue;
 		}
 	}

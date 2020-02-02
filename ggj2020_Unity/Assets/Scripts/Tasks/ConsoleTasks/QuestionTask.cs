@@ -20,7 +20,14 @@ namespace Game.Tasks.ConsoleTasks
 
 			options.Add(new Dictionary<string, string>()
 			{
-				{"question", "ATTENTION: Execute Virus?" },
+				{"question", @"
+Virus requests permission to be executed?
+
+
+	EXECUTE?
+
+
+" },
 				{"keyAccept", "no" },
 				{"keyDecline", "yes" }
 			});
