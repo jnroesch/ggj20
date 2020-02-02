@@ -40,8 +40,8 @@ namespace Game.Console.Commands
 [external] -> show external files
 [local] -> show local files
 [quit] -> close app
-[credits -> show credits]
-[easy, medium, hard]
+[credits] -> show credits
+[easy, medium, hard] -> difficulty
 ";
 			GameConsole.instance.Log(helpText);
 
@@ -60,7 +60,15 @@ namespace Game.Console.Commands
 
 		public void ShowCredits()
 		{
-			GameConsole.instance.Log("game crated at ggj20");
+			GameConsole.instance.Log(@"
+METASYS ENGINEERING REPAIR CONSOLE
+
+EMPLOYEE RECORD
+5117¥	Jan Niklas Roesch
+483¥	Ludwig Seibt ludwigseibt.com
+
+SYSTEM ORIGIN
+Global Game Jam 2020");
 		}
 
 		public void ShowGitStatus()
