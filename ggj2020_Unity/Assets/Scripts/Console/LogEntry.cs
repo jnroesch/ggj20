@@ -58,13 +58,13 @@ namespace Game.Console
 
         private IEnumerator FastGameBoyText(string text)
         {
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(delay / 2);
 
             for (int i = 0; i < text.Length; i++)
             {
                 LogEntryText.text += text[i];
                 SFX.Instance.PlayOneShot(SFX.Instance.GameboyText, .2f);
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForSeconds(delay / 2);
             }
         }
     }
