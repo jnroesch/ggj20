@@ -30,7 +30,7 @@ namespace Game
 		private Timer timer;
 
 		private Stack<GameTask> _gameTasks;
-		public Difficulty difficulty;
+		public static Difficulty difficulty = Difficulty.Medium;
 
 		private GameTask _currentTask;
 
@@ -81,8 +81,6 @@ Recommended commands: [help]
 	PRESS <RETURN> TO START REPAIR SYSTEM.
 
 ");
-
-			difficulty = Difficulty.Medium;	
 		}
 
 		private void Update()

@@ -56,7 +56,7 @@ namespace Game.Console.Commands
 		public void ChangeDifficulty(int newValue)
 		{
 			GameConsole.instance.Log("SYSTEM COMPLEXITY set to "+(Difficulty)newValue + " on next startup.");
-			GameManager.Instance.difficulty = (Difficulty)newValue;
+			GameManager.difficulty = (Difficulty)newValue;
 		}
 
 		public void ShowCredits()
