@@ -142,8 +142,7 @@ Recommended commands: [help]
 			{
 				SFX.Instance.StopBackgroundMusic();
 				console.Log($@"
-
-Filesystem chunk {Mathf.RoundToInt(Random.Range(10, 500))}/1205183 has been restored.
+Filesystem chunk {Mathf.RoundToInt(Random.Range(10, 500))}/1205183 has been restored. Well done.
 Your termination will be reconsidered.
 
         _  _ ___ ________   ____   
