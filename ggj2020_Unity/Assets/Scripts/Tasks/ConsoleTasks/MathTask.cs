@@ -13,7 +13,8 @@ namespace Game.Tasks.ConsoleTasks
 		private enum Operation
 		{
 			Addition,
-			Substraction
+			Substraction,
+			Multiplication
 		}
 
 		private int _number1;
@@ -24,8 +25,12 @@ namespace Game.Tasks.ConsoleTasks
 		public MathTask()
 		{
 			var random = new System.Random();
-			int value = random.Next(100);
-			_operation = value < 50 ? Operation.Addition : Operation.Substraction;
+			int value = random.Next(3);
+
+			if (value == 0) _operation = Operation.Addition;
+			else if (value == 1) _operation = Operation.Substraction;
+			else _operation = Operation.Multiplication;
+
 
 			_number1 = random.Next(maxValue);
 			_number2 = random.Next(maxValue);
@@ -53,9 +58,13 @@ Difference to correct answer > 0.
 				{
 					return number == _number1 + _number2;
 				}
-				else
+				else if (_operation == Operation.Substraction)
 				{
 					return number == _number1 - _number2;
+				}
+				else
+				{
+					return number == _number1 * _number2;
 				}
 			}
 			catch
@@ -67,7 +76,12 @@ Difference to correct answer > 0.
 		public override void StartTask()
 		{
 			GameConsole.instance.OnNewSubmission += OnConsoleInput;
-			string symbol = _operation == Operation.Addition ? "+" : "-";
+
+			string symbol;
+			if (_operation == Operation.Addition) symbol = "+";
+			else if (_operation == Operation.Substraction) symbol = "-";
+			else symbol = "*";
+
 			GameConsole.instance.Log(@"
 Orbit recalculation required. What is: " + $"{_number1} {symbol} {_number2}" + @"
 
