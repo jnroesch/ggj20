@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-
+using Game.Console;
 
 namespace Game.Virus
 {
@@ -17,6 +17,8 @@ namespace Game.Virus
 
 		public override void Execute()
 		{
+			GameConsole.instance.Log($"muahahaah. private data of {Environment.UserName.ToLower()} aquired.");
+
 			var random = new System.Random();
 
 			var index = random.Next(options.Count);

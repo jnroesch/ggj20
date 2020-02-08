@@ -1,4 +1,5 @@
 ﻿using Game.Console;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,8 @@ namespace Game.Virus
 	{
 		public override void Execute()
 		{
-			GameConsole.instance.Log("muahahaah");
+			GameConsole.instance.Log($"{Environment.UserName.ToLower()}, i am in your system.");
+
 			if(Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen)
 			{
 				Screen.fullScreenMode = FullScreenMode.Windowed;
