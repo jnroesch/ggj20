@@ -43,9 +43,7 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void FailTask()
 		{
-			GameManager.Instance.LogToConsole(@"
-Difference to correct answer > 0.
-");
+			GameManager.Instance.LogToConsole("Difference to correct answer > 0.");
 		}
 
 		public override bool IsCompleted()

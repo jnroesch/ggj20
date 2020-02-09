@@ -37,8 +37,7 @@ namespace Game.Tasks.ConsoleTasks
 
 		public override void FailTask()
 		{
-			GameManager.Instance.LogToConsole(@"
-Incorrect.");
+			GameManager.Instance.LogToConsole("Incorrect.");
 		}
 
 		public override bool IsCompleted()
@@ -62,9 +61,7 @@ Database corrupted... Please spell recovery command: " + _textToInput + @"
 		{
 			SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
 			GameConsole.instance.OnNewSubmission -= OnConsoleInput;
-			GameManager.Instance.LogToConsole(@"
-Command accepted.
-");
+			GameManager.Instance.LogToConsole("Command accepted.");
 			GameManager.Instance.FinishCurrentTask();
 		}
 

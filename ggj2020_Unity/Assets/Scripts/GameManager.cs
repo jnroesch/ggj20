@@ -226,7 +226,7 @@ Your productivity score has been noted. Goodbye.
 				}
 			}
 
-			//game did not yet start
+			//game did not yet start or game is finished
 			if (_currentTask == null)
 			{
 				if (Input.GetKeyDown(KeyCode.Return))
