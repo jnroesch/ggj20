@@ -17,6 +17,7 @@ namespace Game.Tasks.FileTasks
 		"report.txt",
 		"system.txt",
 		"users.txt",
+		"nsfmachine.gif",
 	};
 
 		private string _fileName;
@@ -50,7 +51,6 @@ namespace Game.Tasks.FileTasks
 One file is missing in [external]: " + _fileName + @"
 
 	CREATE FILE.
-
 ");
 		}
 
