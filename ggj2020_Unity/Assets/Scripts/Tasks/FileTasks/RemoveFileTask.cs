@@ -31,7 +31,6 @@ namespace Game.Tasks.FileTasks
 A virus created a malicious file in [local] files: " + _fileName + @" please remove it.
 
 	REMOVE FILE.
-
 ");
 		}
 

@@ -48,6 +48,8 @@ Legacy system {Environment.OSVersion} credentials manager requests user reauthor
 
         public override void WinTask()
         {
+            SFX.Instance.PlayOneShot(SFX.Instance.GetRandomWinBeep());
+
             GameConsole.instance.OnNewSubmission -= OnConsoleInput;
             GameConsole.instance.Log("Credentials accepted.");
             GameManager.Instance.FinishCurrentTask();
