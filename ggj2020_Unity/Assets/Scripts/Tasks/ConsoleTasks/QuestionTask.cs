@@ -30,6 +30,18 @@ Virus requests permission to be executed.
 				{"keyDecline", "yes" }
 			});
 
+			options.Add(new Dictionary<string, string>()
+			{
+				{"question", @"
+Virus requests permission to be executed.
+
+	EXECUTE?
+
+" },
+				{"keyAccept", "yes" },
+				{"keyDecline", "no" }
+			});
+
 			#endregion
 
 			var random = new System.Random();
@@ -63,7 +75,7 @@ Virus requests permission to be executed.
 			}
 			else
 			{
-				GameConsole.instance.Log("WRONG COMMAND");
+				GameConsole.instance.Log("Unrecognized command. Answering is mandatory.");
 				GameConsole.instance.Log($"Type [{option["keyAccept"]}] to accept or [{option["keyDecline"]}] to decline");
 				return false;
 			}
