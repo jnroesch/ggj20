@@ -11,6 +11,13 @@ namespace Game.Tasks.FileTasks
 	{
 		private string _fileName;
 
+		private List<string> options = new List<string>()
+		{
+			"referencetable.xml",
+			"lifesupport.dll",
+			"nsfhuman.gif",
+		};
+
 		public override void FailTask()
 		{
 			throw new System.NotImplementedException();
@@ -33,7 +40,10 @@ namespace Game.Tasks.FileTasks
 
 			if (files.Count == 0)
 			{
-				_fileName = "important.xml";
+				var random = new System.Random();
+				int index = random.Next(options.Count);
+				_fileName = options[index];
+
 				File.Create(Path.Combine(Application.persistentDataPath, _fileName));
 			}
 			else
@@ -47,7 +57,6 @@ namespace Game.Tasks.FileTasks
 File has been placed in wrong directory. Please move file from [external] to [local]: {_fileName}
 
 	MOVE FILE.
-
 ");
 		}
 

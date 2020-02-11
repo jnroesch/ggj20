@@ -28,17 +28,19 @@ public class EditFileTask : FileTask
 
     public override void StartTask()
     {
+        int linesAmout = 5;
+
         var random = new System.Random();
-        _lineIndex = random.Next(0, 10);
-        _targetString = Convert.ToString(random.Next(0, 64), 2).PadLeft(6, '0');
+        _lineIndex = random.Next(0, linesAmout);
+        _targetString = Convert.ToString(random.Next(0, 32), 2).PadLeft(5, '0');
 
         _path = Path.Combine(Application.persistentDataPath, _fileName);
 
         StreamWriter writer = new StreamWriter(_path, false);
 
-        for (int i = 0; i < 10;)
+        for (int i = 0; i < linesAmout;)
         {
-            string line = Convert.ToString(random.Next(0, 64), 2).PadLeft(6, '0');
+            string line = Convert.ToString(random.Next(0, 32), 2).PadLeft(5, '0');
             if (i != _lineIndex || line != _targetString)
             {
                 writer.WriteLine(line);

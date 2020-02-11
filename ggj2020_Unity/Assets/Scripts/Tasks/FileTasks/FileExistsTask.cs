@@ -11,14 +11,14 @@ namespace Game.Tasks.FileTasks
 	public class FileExistsTask : FileTask
 	{
 		private List<string> options = new List<string>()
-	{
-		"sysconfig.txt",
-		"manual.pdf",
-		"report.txt",
-		"system.txt",
-		"users.txt",
-		"nsfmachine.gif",
-	};
+		{
+			"sysconfig.txt",
+			"manual.pdf",
+			"report.txt",
+			"system.txt",
+			"users.txt",
+			"nsfmachine.gif",
+		};
 
 		private string _fileName;
 

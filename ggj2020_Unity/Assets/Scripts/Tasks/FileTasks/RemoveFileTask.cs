@@ -11,6 +11,13 @@ namespace Game.Tasks.FileTasks
 	{
 		private string _fileName = "virus.txt";
 
+		private List<string> options = new List<string>()
+		{
+			"virus.txt",
+			"trojan.wav",
+			"ransom.sys",
+		};
+
 		public override void FailTask()
 		{
 			throw new System.NotImplementedException();
@@ -24,7 +31,12 @@ namespace Game.Tasks.FileTasks
 
 		public override void StartTask()
 		{
+			var random = new System.Random();
+			int index = random.Next(options.Count);
+			_fileName = options[index];
+
 			File.Create(Path.Combine(Application.dataPath, _fileName));
+
 
 
 			GameManager.Instance.LogToConsole(@"
