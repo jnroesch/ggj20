@@ -19,13 +19,16 @@ namespace Game.Console
         private LogEntry logEntry;
         private Text textField;
 
+        private int _currentCaretPosition;
+        private string _caret = "_";
+
         public delegate void GameConsoleEvent();
         public GameConsoleEvent OnNewSubmission;
 
         private void OnEnable()
         {
             inputField.onSubmit.AddListener(delegate { Submit(); });
-            inputField.onValueChanged.AddListener(delegate { UpdateTextField(); });
+            inputField.onValueChanged.AddListener(delegate { UpdateTextFieldText(); });
         }
 
         private void OnDisable()
@@ -38,6 +41,7 @@ namespace Game.Console
             instance = this;
 
             CreateNewInputEntry();
+            UpdateTextFieldCaret();
         }
 
         private void Update()
@@ -57,17 +61,62 @@ namespace Game.Console
             {
                 SlelectNextCommand();
             }
+
+            CheckForCaretMovement();
         }
 
-        private void UpdateTextField()
+        private void CheckForCaretMovement()
+        {
+            if (_currentCaretPosition != inputField.caretPosition)
+            {
+                _currentCaretPosition = inputField.caretPosition;
+                UpdateTextFieldCaret();
+            }
+        }
+
+        //called from Timer.cs
+        private IEnumerator BlinkCaret()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(1f);
+
+                if (_caret == "_")
+                {
+                    _caret = " "; //this " " is a special whitespace without linebreak. created with Alt+255.
+                }
+                else
+                {
+                    _caret = "_";
+                }
+                UpdateTextFieldCaret();
+            }
+        }
+
+        private void UpdateTextFieldCaret()
+        {
+            string text = inputField.text;
+            if (text.ToCharArray().Length > inputField.caretPosition)
+            {
+                text = text.Insert(inputField.caretPosition, _caret);
+            }
+            else
+            {
+                text += _caret;
+            }
+            textField.text = text;
+        }
+
+        private void UpdateTextFieldText()
         {
 			if (GameManager.Instance.IsConsoleBlocked)
 			{
 				return;
 			}
 
-			SFX.Instance.Keyboard();
-            textField.text = inputField.text;
+            SFX.Instance.Keyboard();
+            string text = inputField.text;
+            textField.text = text;
         }
 
         private void SelectLastCommand()
@@ -76,6 +125,7 @@ namespace Game.Console
             {
                 currentLogEntryInt--;
                 inputField.text = logEntries[currentLogEntryInt].GetText();
+                UpdateTextFieldCaret();
             }
         }
 
@@ -85,6 +135,7 @@ namespace Game.Console
             {
                 currentLogEntryInt++;
                 inputField.text = logEntries[currentLogEntryInt].GetText();
+                UpdateTextFieldCaret();
             }
         }
 
@@ -110,7 +161,10 @@ namespace Game.Console
 			{
 				return;
 			}
-			SFX.Instance.PlayOneShot(SFX.Instance.SubmitSound);
+
+            textField.text = inputField.text;
+
+            SFX.Instance.PlayOneShot(SFX.Instance.SubmitSound);
             CreateNewLogEntry();
             OnNewSubmission?.Invoke();
         }

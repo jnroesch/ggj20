@@ -21,6 +21,7 @@ namespace Game.Console
         public void StartTimer()
         {
 			timeLeft = totalTime;
+            console.StartCoroutine("BlinkCaret");
 			timerCoroutine = TimerRoutine();
 			StartCoroutine(timerCoroutine);
         }
